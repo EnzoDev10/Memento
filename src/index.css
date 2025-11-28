@@ -30,8 +30,6 @@
     --green-5: #347052;
     --green-6: #3e8662;
     --green-7: #499d72;
-    /* Utilizar color-mix en vez de esto
-  --verde-transparente-1: rgba(10 21 15 / 0.9); */
     --neutral-1: #243048;
     --neutral-5: #acc5d2;
     --neutral-4: #819cb0;
@@ -50,12 +48,6 @@
     --body-size: 18px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html {
     background-image: url("./assets/samuel-field-OyamzdtPqfw-unsplash.jpg");
     background-position: center;
@@ -64,11 +56,30 @@ html {
     height: 100vh;
 }
 
-html::before {
-    width: 100%;
-    background-color: color-mix(in srgb, var(--green-1) 100%, transparent 100%);
+body {
     height: 100%;
-    content: "";
-    position: absolute;
-    z-index: -1000;
 }
+
+*:focus-visible {
+    outline: solid 2px var(--green-6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--neutral-7);
+    font-family: var(--main-font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+
+

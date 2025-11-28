@@ -1,10 +1,17 @@
-import "./App.css";
+import "./index.css";
+
+import "./components/Reusables";
+
+import { DateOfBirth } from "./components/DateOfBirth/DateOfBirth";
+
 function App() {
-    return (
-        <>
-            <main></main>
-        </>
-    );
+  return (
+    <>
+      <section>
+        <DateOfBirth />
+      </section>
+    </>
+  );
 }
 
 export default App;

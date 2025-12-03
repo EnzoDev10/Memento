@@ -86,6 +86,7 @@ export const DateOfBirth = () => {
   const customClassNames = {
     root: "mi-calendario-base",
     caption: "header-mes",
+    month_grid:"meses",
     weekday: "nombre-dia",
     cell: "dia-celda",
     day: "dia",

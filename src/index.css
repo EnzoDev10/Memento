@@ -19,10 +19,6 @@
     --body-size: 18px;
 
     /* Spacing */
-    --radius-small: 8px;
-    --radius-normal: 16px;
-    --radius-large: 24px;
-
     --spacing-1: 8px;
     --spacing-2: 16px;
     --spacing-3: 24px;
@@ -31,6 +27,10 @@
     --spacing-6: 48px;
     --spacing-7: 56px;
     --spacing-8: 64px;
+
+    --radius-small: 8px;
+    --radius-normal: 16px;
+    --radius-large: 24px;
 
     /* Colors */
     --green-1: #0a1610;
@@ -83,26 +83,32 @@ h6 {
 }
 
 h1 {
+    font-size: var(--heading-1);
     line-height: var(--lineheight-h2);
 }
 
 h2 {
+    font-size: var(--heading-2);
     line-height: var(--lineheight-h2);
 }
 
 h3 {
+    font-size: var(--heading-3);
     line-height: var(--lineheight-h3);
 }
 
 h4 {
+    font-size: var(--heading-4);
     line-height: var(--lineheight-h4);
 }
 
 h5 {
+    font-size: var(--heading-5);
     line-height: var(--lineheight-h5);
 }
 
 h6 {
+    font-size: var(--heading-6);
     line-height: var(--lineheight-h6);
 }
 

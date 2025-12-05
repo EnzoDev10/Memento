@@ -1,14 +1,14 @@
-import "./index.css";
+import "@/index.css";
 
-import "./components/Reusables";
+import "@/components/Reusables";
 
-import { DateOfBirth } from "./components/DateOfBirth/DateOfBirth";
+import { Form } from "@/features/Form/Form";
 
 function App() {
   return (
     <>
       <section>
-        <DateOfBirth />
+        <Form />
       </section>
     </>
   );

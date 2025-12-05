@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import "../../index.css";
+import "@/index.css";
 
-import { Container } from "../Reusables";
+import { Container } from "@/components/Reusables";
 
 export const CalendarWrapper = styled(Container)`
   width: fit-content;

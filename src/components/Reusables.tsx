@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import "../index.css";
+import "@/index.css";
 
 export const Container = styled.div`
   background-color: var(--green-1);
@@ -26,6 +26,7 @@ export const StyledInput = styled.input`
   background-color: var(--green-3);
   border: none;
   height: 100%;
+  width: 240px;
   border-radius: var(--radius-small);
   padding-left: var(--spacing-1);
 `;

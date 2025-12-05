@@ -4,18 +4,17 @@ import styled from "styled-components";
 import { DayPicker } from "react-day-picker";
 import { format, isValid, parse } from "date-fns";
 
-import { CalendarWrapper } from "./Calendar";
+import { CalendarWrapper } from "@/features/Form/components/DateOfBirth/Calendar";
 import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import {
-  Container,
   StyledHeading,
   InputWrapper,
   StyledInput,
   StyledBtn,
-} from "../Reusables";
+} from "@/components/Reusables";
 
 const StyledDialogContent = styled(Dialog.Content)`
   background-color: var(--gray-1);
@@ -86,7 +85,7 @@ export const DateOfBirth = () => {
   const customClassNames = {
     root: "mi-calendario-base",
     caption: "header-mes",
-    month_grid:"meses",
+    month_grid: "meses",
     weekday: "nombre-dia",
     cell: "dia-celda",
     day: "dia",
@@ -98,23 +97,22 @@ export const DateOfBirth = () => {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Container>
-        <StyledHeading>Fecha de nacimiento</StyledHeading>
-        <InputWrapper>
-          <StyledInput
-            id="date-input"
-            type="text"
-            value={inputValue}
-            placeholder="MM/dd/yyyy"
-            onChange={handleInputChange}
-          />
-          <Dialog.Trigger asChild>
-            <StyledBtn>
-              <CalendarBlankIcon size={28} />
-            </StyledBtn>
-          </Dialog.Trigger>
-        </InputWrapper>
-      </Container>
+      <StyledHeading>Fecha de nacimiento</StyledHeading>
+      <InputWrapper>
+        <StyledInput
+          id="date-input"
+          type="text"
+          value={inputValue}
+          placeholder="MM/dd/yyyy"
+          onChange={handleInputChange}
+        />
+        <Dialog.Trigger asChild>
+          <StyledBtn>
+            <CalendarBlankIcon size={28} />
+          </StyledBtn>
+        </Dialog.Trigger>
+      </InputWrapper>
+
       <Dialog.Portal>
         <StyledOverlay />
         <StyledDialogContent>

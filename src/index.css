@@ -1,13 +1,14 @@
 :root {
     /* Typography */
     --main-font-family: "Fira Code";
-    --lineheight-body: 21.6px;
     --lineheight-h1: 115.2px;
     --lineheight-h2: 72px;
     --lineheight-h3: 57.6px;
     --lineheight-h4: 40.8px;
     --lineheight-h5: 28.8px;
     --lineheight-h6: 24px;
+    --lineheight-body: 21.6px;
+    --lineheight-input: 15.6px;
 
     /* Headings */
     --heading-1: 96px;
@@ -17,6 +18,7 @@
     --heading-5: 24px;
     --heading-6: 20px;
     --body-size: 18px;
+    --input-size: 13px;
 
     /* Spacing */
     --spacing-1: 8px;
@@ -121,8 +123,6 @@ p,
 span,
 div,
 button,
-input,
-textarea,
 select,
 label,
 a,
@@ -130,4 +130,9 @@ li,
 td,
 th {
     line-height: var(--lineheight-body);
+}
+
+input,
+textarea {
+    line-height: var(--lineheight-input);
 }

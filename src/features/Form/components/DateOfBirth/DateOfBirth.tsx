@@ -9,12 +9,7 @@ import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import * as Dialog from "@radix-ui/react-dialog";
 
-import {
-  StyledHeading,
-  InputWrapper,
-  StyledInput,
-  StyledBtn,
-} from "@/components/Reusables";
+import { StyledInput, StyledBtn, StyledWrapper } from "@/components/Reusables";
 
 const StyledDialogContent = styled(Dialog.Content)`
   background-color: var(--gray-1);
@@ -97,21 +92,24 @@ export const DateOfBirth = () => {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <StyledHeading>Fecha de nacimiento</StyledHeading>
-      <InputWrapper>
-        <StyledInput
-          id="date-input"
-          type="text"
-          value={inputValue}
-          placeholder="MM/dd/yyyy"
-          onChange={handleInputChange}
-        />
-        <Dialog.Trigger asChild>
-          <StyledBtn>
-            <CalendarBlankIcon size={28} />
-          </StyledBtn>
-        </Dialog.Trigger>
-      </InputWrapper>
+      <StyledWrapper>
+        <h6>Fecha de nacimiento</h6>
+
+        <StyledInput>
+          <input
+            id="date-input"
+            type="text"
+            value={inputValue}
+            placeholder="MM/dd/yyyy"
+            onChange={handleInputChange}
+          />
+          <Dialog.Trigger asChild>
+            <button>
+              <CalendarBlankIcon size={28} />
+            </button>
+          </Dialog.Trigger>
+        </StyledInput>
+      </StyledWrapper>
 
       <Dialog.Portal>
         <StyledOverlay />

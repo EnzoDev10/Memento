@@ -4,7 +4,7 @@ import { QuoteSelector } from "@/features/Form/components/QuoteSelector/QuoteSel
 import styled from "styled-components";
 
 const FormContainer = styled(Container)`
-  width: 35vw;
+  width: 30vw;
   min-width: 300px;
 `;
 

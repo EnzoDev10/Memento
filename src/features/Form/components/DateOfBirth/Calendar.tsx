@@ -35,7 +35,7 @@ export const CalendarWrapper = styled(Container)`
       background: transparent;
       border: none;
       border-radius: var(--radius-small);
-      color: var(--neutral-7);
+      color: var(--neutral-300);
       font-size: 14px;
 
       &:hover:not(.dia-seleccionado > .dia-boton):not(.rdp-outside) {

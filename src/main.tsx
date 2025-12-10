@@ -11,9 +11,6 @@ const StyledMain = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: color-mix(in srgb, var(--green-2) 75%, transparent 100%);
-  position: absolute;
 `;
 
 createRoot(document.getElementById("root")!).render(

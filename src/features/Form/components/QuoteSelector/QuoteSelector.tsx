@@ -1,13 +1,5 @@
 import { StyledInput, StyledWrapper } from "@/components/Reusables";
 import { DiceSixIcon } from "@phosphor-icons/react/dist/ssr";
-import styled from "styled-components";
-
-const StyledQuoteMessage = styled.span`
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
 
 export const QuoteSelector = () => {
   // Crea la funconalidad para que al escribir en el input se actualice el contenido de quote.
@@ -36,7 +28,6 @@ export const QuoteSelector = () => {
           />
         </StyledInput>
       </StyledWrapper>
-      <StyledQuoteMessage>Enrioque</StyledQuoteMessage>
     </>
   );
 };

@@ -42,25 +42,31 @@
     --green-5: #347052;
     --green-6: #3e8662;
     --green-7: #499d72;
-    --neutral-1: #243048;
-    --neutral-5: #acc5d2;
-    --neutral-4: #819cb0;
-    --neutral-2: #3e506b;
-    --neutral-3: #5d758d;
-    --neutral-6: #d6e2e9;
-    --neutral-7: #dee8ed;
+
+    --neutral-50: #f8f9fa;
+    --neutral-100: #e9ecef;
+    --neutral-200: #dee2e6;
+    --neutral-300: #ced4da;
+    --neutral-400: #adb5bd;
+    --neutral-500: #6c757d;
+    --neutral-600: #495057;
+    --neutral-700: #343a40;
+    --neutral-800: #212529;
 }
 
 html {
-    background-image: url("./assets/samuel-field-OyamzdtPqfw-unsplash.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--neutral-600);
     width: 100vw;
     height: 100vh;
 }
 
+.root {
+    height: 100%;
+}
+
 body {
     height: 100%;
+    width: 100%;
 }
 
 *:focus-visible {
@@ -71,7 +77,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--neutral-7);
+    color: var(--neutral-300);
     font-family: var(--main-font-family);
 }
 
@@ -112,11 +118,6 @@ h5 {
 h6 {
     font-size: var(--heading-6);
     line-height: var(--lineheight-h6);
-}
-
-body {
-    height: 100%;
-    line-height: var(--lineheight-body);
 }
 
 p,

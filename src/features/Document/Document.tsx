@@ -3,7 +3,7 @@ import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 // Hacer que su contenido sea mutable a traves del formulario.
 
 import "@/index.css";
-import { WeekSvg } from "@/components/WeekSvg";
+import { Year } from "@/components/YearGenerator";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e9ecef",
   },
   section: {
-    padding: 10,
+    padding: 8,
     alignSelf: "center",
   },
 });
@@ -23,11 +23,16 @@ export const MyDocument = () => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-          <Text style={{ fontSize: 28 }}>Memento Mori</Text>
+          <Text style={{ fontSize: 24 }}>Memento Mori</Text>
         </View>
         <View style={styles.section}>
           {Array.from({ length: 75 }).map((_, index) => (
-            <WeekSvg key={index} year={index + 1} />
+            <>
+              <Year key={index} year={index + 1} />
+               {((index + 1) % 10 === 0 || (index + 1) % 10 === 5) ? (
+                 <View style={{ marginTop: 2, marginBottom: 2 }} />
+               ) : null}
+            </>
           ))}
         </View>
       </Page>

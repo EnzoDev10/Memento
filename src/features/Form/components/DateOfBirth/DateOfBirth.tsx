@@ -43,9 +43,11 @@ const StyledCloseBtn = styled(StyledBtn)`
   padding: 0;
 `;
 
-export const DateOfBirth = () => {
-  const [month, setMonth] = useState(new Date());
+interface DatePickerProps {
+  setFormDate: (date: Date) => void;
+}
 
+export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
   const [inputValue, setInputValue] = useState("");
@@ -58,9 +60,10 @@ export const DateOfBirth = () => {
       setSelectedDate(undefined);
     } else {
       setSelectedDate(date);
-      setMonth(date);
+
       setInputValue(format(date, "MM/dd/yyyy"));
       setOpen(false);
+      setFormDate(date);
     }
   };
 
@@ -71,7 +74,6 @@ export const DateOfBirth = () => {
 
     if (isValid(parsedDate)) {
       setSelectedDate(parsedDate);
-      setMonth(parsedDate);
     } else {
       setSelectedDate(undefined);
     }
@@ -102,6 +104,7 @@ export const DateOfBirth = () => {
             value={inputValue}
             placeholder="MM/dd/yyyy"
             onChange={handleInputChange}
+            name="date"
           />
           <Dialog.Trigger asChild>
             <button>
@@ -128,8 +131,6 @@ export const DateOfBirth = () => {
               </StyledCloseBtn>
             </Dialog.Close>
             <DayPicker
-              month={month}
-              onMonthChange={setMonth}
               autoFocus
               mode="single"
               selected={selectedDate}

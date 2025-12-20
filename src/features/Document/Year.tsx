@@ -1,14 +1,9 @@
+import { DateContext } from "@/App";
 import { Svg, Rect, Text, View } from "@react-pdf/renderer";
+import { useContext } from "react";
 
-// Cambiar la forma en la que se acomadan
-// las semanas para que tengan separadores por x cantidad de años.
 // Asegurarse que entre la cita en el final.
 // Agregar la fuente ancient geek.
-
-interface Props {
-  year: number;
-  separator?: boolean;
-}
 
 const weekSize = 4.75;
 const gap = 4;
@@ -20,10 +15,12 @@ const svgHeight = weekSize + topPadding + bottomPadding;
 
 interface weekProps {
   index: number;
+  // filled: boolean;
   strokeColor: string;
+  fillColor: string;
 }
 
-const Week = ({ index, strokeColor: color = "#222" }: weekProps) => {
+const Week = ({ index, strokeColor: color = "#222", fillColor }: weekProps) => {
   return (
     <Rect
       key={index}
@@ -31,15 +28,21 @@ const Week = ({ index, strokeColor: color = "#222" }: weekProps) => {
       y={topPadding}
       width={weekSize}
       height={weekSize}
-      fill="none"
+      fill={fillColor}
       stroke={color}
       strokeWidth={1}
     />
   );
 };
 
-export const Year = ({ year: year }: Props) => {
+interface Props {
+  year: number;
+}
+
+export const Year = ({ year }: Props) => {
   const stringYear = year.toString();
+
+  const dates = useContext(DateContext);
 
   return (
     <View
@@ -47,18 +50,21 @@ export const Year = ({ year: year }: Props) => {
     >
       <Svg width={svgWidth} height={svgHeight}>
         {Array.from({ length: totalWeeks }).map((_, index) => (
-          // Creates a column of empty weeks to divide the year in two parts.
           <Week
             key={index}
             index={index}
-            strokeColor={index === 27 ? "" : "#222"}
+            // Creates an empty column to separate the year in two parts.
+            strokeColor={index != 26 ? "#222" : ""}
+            fillColor={
+              index != 26 && dates.weeksDifference > 0 ? "#559955" : ""
+            }
           />
         ))}
       </Svg>
       {stringYear.endsWith("0") ||
         (stringYear.endsWith("5") && (
           <Text
-            style={{ color: "#f00", fontSize: weekSize * 2, marginLeft: 5 }}
+            style={{ color: "#222", fontSize: weekSize * 2, marginLeft: 5 }}
           >
             {stringYear}
           </Text>

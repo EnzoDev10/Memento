@@ -1,6 +1,6 @@
-import { DateContext } from "@/App";
 import { Container, StyledBtn } from "@/components/Reusables";
 import { DateOfBirth } from "@/features/Form/components/DateOfBirth/DateOfBirth";
+import { DateContext } from "@/global/DateContext";
 import { differenceInWeeks } from "date-fns";
 import { useContext, useState } from "react";
 // import { QuoteSelector } from "@/features/Form/components/QuoteSelector/QuoteSelector";
@@ -20,12 +20,13 @@ const StyledForm = styled.form`
 export const Form = () => {
   const [birthday, setBirthday] = useState<Date>(new Date());
 
-  const dates = useContext(DateContext);
+  const {setUserDate, setWeeksDifference} = useContext(DateContext);
 
   const handleFormSubmit = () => {
-    dates.setUserDate(birthday);
-    dates.setWeeksDifference(differenceInWeeks(new Date(), birthday));
+    setUserDate(birthday);
+    setWeeksDifference(differenceInWeeks(new Date(), birthday));
   };
+
   // revisar por que cuando se le da al boton del form la pagina se vuelve blanca
   return (
     <FormContainer>

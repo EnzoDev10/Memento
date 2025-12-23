@@ -1,6 +1,4 @@
-import { DateContext } from "@/App";
 import { Svg, Rect, Text, View } from "@react-pdf/renderer";
-import { useContext } from "react";
 
 // Asegurarse que entre la cita en el final.
 // Agregar la fuente ancient geek.
@@ -10,17 +8,21 @@ const gap = 4;
 const topPadding = 2;
 const bottomPadding = 2;
 const totalWeeks = 53; // an extra week to add a separator right after the 26th week.
-const svgWidth = totalWeeks * (weekSize + gap) - gap;
+const svgWidth = totalWeeks * (weekSize + gap);
 const svgHeight = weekSize + topPadding + bottomPadding;
 
 interface weekProps {
   index: number;
-  // filled: boolean;
   strokeColor: string;
-  fillColor: string;
+  remainingAmount: number;
 }
 
-const Week = ({ index, strokeColor: color = "#222", fillColor }: weekProps) => {
+const Week = ({
+  index,
+  strokeColor: color = "#222",
+  remainingAmount,
+}: weekProps) => {
+  const fillColor = remainingAmount > 0 ? "#559955" : "";
   return (
     <Rect
       key={index}
@@ -30,36 +32,42 @@ const Week = ({ index, strokeColor: color = "#222", fillColor }: weekProps) => {
       height={weekSize}
       fill={fillColor}
       stroke={color}
-      strokeWidth={1}
+      strokeWidth={0.5}
     />
   );
 };
 
 interface Props {
   year: number;
+  amountToFill: number;
 }
 
-export const Year = ({ year }: Props) => {
+export const Year = ({ year, amountToFill }: Props) => {
   const stringYear = year.toString();
 
-  const dates = useContext(DateContext);
+  const weeks = [];
+  let remaining = amountToFill;
+  for (let index = 0; index < totalWeeks; index++) {
+    const isSeparator = index === 26;
+    const shouldFill = !isSeparator && remaining > 0;
+    weeks.push(
+      <Week
+        key={`week-${index}`}
+        index={index}
+        // Creates an empty column to separate the year in two parts.
+        strokeColor={isSeparator ? "" : "#222"}
+        remainingAmount={shouldFill ? remaining : 0}
+      />,
+    );
+    if (shouldFill) remaining--;
+  }
 
   return (
     <View
       style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
     >
-      <Svg width={svgWidth} height={svgHeight}>
-        {Array.from({ length: totalWeeks }).map((_, index) => (
-          <Week
-            key={index}
-            index={index}
-            // Creates an empty column to separate the year in two parts.
-            strokeColor={index != 26 ? "#222" : ""}
-            fillColor={
-              index != 26 && dates.weeksDifference > 0 ? "#559955" : ""
-            }
-          />
-        ))}
+      <Svg width={svgWidth} height={svgHeight} style={{ padding: "0 1px" }}>
+        {weeks}
       </Svg>
       {stringYear.endsWith("0") ||
         (stringYear.endsWith("5") && (

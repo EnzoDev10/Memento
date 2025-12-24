@@ -22,7 +22,7 @@ const Week = ({
   strokeColor: color = "#222",
   remainingAmount,
 }: weekProps) => {
-  const fillColor = remainingAmount > 0 ? "#559955" : "";
+  const fillColor = remainingAmount > 0 ? "#284283 " : "";
   return (
     <Rect
       key={index}

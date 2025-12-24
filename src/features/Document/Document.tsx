@@ -1,24 +1,32 @@
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  Font,
+} from "@react-pdf/renderer";
 
-// Hacer que su contenido sea mutable a traves del formulario.
+import Stoic from "@/assets/fonts/STOIC.ttf";
 
 import "@/index.css";
 import { Year } from "@/features/Document/Year";
 
-// Create styles
+Font.register({ family: "Stoic", src: Stoic });
+
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
     backgroundColor: "#e9ecef",
     alignItems: "center",
+    fontFamily: "Stoic",
+    gap: 8,
   },
-  section: {
-    padding: 4,
+  weeksContainer: {
     alignSelf: "center",
   },
 });
 
-// Hace que el componente que contiene las semanas se repita 80 veces
 export const MyDocument = ({
   weeksDifference,
 }: {
@@ -50,14 +58,31 @@ export const MyDocument = ({
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text style={{ fontSize: 24 }}>Memento Mori</Text>
+        <Text style={{ fontSize: 24, marginTop: 10 }}>Memento Mori</Text>
+
+        <View style={styles.weeksContainer}>{content}</View>
+        <View
+          style={{
+            gap: 10,
+            // tamaño perfecto para que la cita entre con la grilla de semanas
+            padding: "0 70 0 55",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 12,
+              alignSelf: "center",
+              textAlign: "center",
+            }}
+            id="quote"
+          >
+            You could leave life right now. Let that determine what you do and
+            say and think.
+          </Text>
+          <Text style={{ fontSize: 10, alignSelf: "center" }} id="author">
+            - Marcus Aurelius
+          </Text>
         </View>
-        <View style={styles.section}>{content}</View>
-        <Text style={{ fontSize: 12, alignSelf: "center" }}>
-          Life, if well lived, is long enough.
-        </Text>
-        <Text style={{ fontSize: 10, alignSelf: "center" }}>Seneca</Text>
       </Page>
     </Document>
   );

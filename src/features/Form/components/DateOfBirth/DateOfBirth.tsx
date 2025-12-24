@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { DayPicker } from "react-day-picker";
@@ -10,6 +10,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import { StyledInput, StyledBtn, StyledWrapper } from "@/components/Reusables";
+import { DateContext } from "@/global/DateContext";
 
 const StyledDialogContent = styled(Dialog.Content)`
   background-color: var(--gray-1);
@@ -54,7 +55,11 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
 
   const [open, setOpen] = useState(false);
 
+  const { setChange } = useContext(DateContext);
+
   const handleDayPickerSelect = (date: Date | undefined) => {
+    setChange(false);
+
     if (!date) {
       setInputValue("");
       setSelectedDate(undefined);
@@ -68,8 +73,8 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChange(false);
     setInputValue(e.target.value); // Sincroniza el valor del input
-
     const parsedDate = parse(e.target.value, "MM/dd/yyyy", new Date());
 
     if (isValid(parsedDate)) {

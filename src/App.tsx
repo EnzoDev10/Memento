@@ -6,7 +6,7 @@ import { Form } from "@/features/Form/Form";
 
 import { MyDocument } from "@/features/Document/Document";
 import { PDFViewer } from "@react-pdf/renderer";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { DateContext } from "@/global/DateContext";
 
@@ -14,6 +14,35 @@ function App() {
   const currentDate = new Date();
   const [userDate, setUserDate] = useState<Date>(currentDate);
   const [weeksDifference, setWeeksDifference] = useState<number>(0);
+  const [quote, setQuote] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
+
+  const [change, setChange] = useState(false);
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isIframeLoading, setIsIframeLoading] = useState(true);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    if (iframe.contentDocument?.readyState === "complete") {
+      setIsIframeLoading(false);
+      return;
+    }
+
+    setIsIframeLoading(true);
+
+    function handleLoad() {
+      setIsIframeLoading(false);
+    }
+
+    iframe.addEventListener("load", handleLoad);
+
+    return () => {
+      iframe.removeEventListener("load", handleLoad);
+    };
+  }, [userDate]);
 
   return (
     <>
@@ -24,19 +53,54 @@ function App() {
             setUserDate,
             weeksDifference,
             setWeeksDifference,
+            quote,
+            setQuote,
+            author,
+            setAuthor,
+            change,
+            setChange,
           }}
         >
           <Form />
-          <p>{currentDate.toDateString()}</p>
-          {userDate && <p>{userDate.toDateString()}</p>}
-          {userDate && <p>{weeksDifference}</p>}
         </DateContext.Provider>
       </section>
-      <section style={{ width: "80%", height: "700px" }}>
-        {weeksDifference > 0 && (
-          <PDFViewer style={{ width: "100%", height: "100%" }}>
-            <MyDocument weeksDifference={weeksDifference} />
-          </PDFViewer>
+      <section
+        style={{
+          width: "65%",
+          height: "700px",
+          display: "flex",
+          justifyContent: "center",
+          position: "relative",
+        }}
+      >
+        {change && (
+          <>
+            {isIframeLoading && (
+              <h3
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                {" "}
+                Cargando...
+              </h3>
+            )}
+
+            <PDFViewer
+              style={{ width: "100%", height: "100%" }}
+              innerRef={iframeRef}
+              showToolbar={false}
+            >
+              <MyDocument
+                weeksDifference={weeksDifference}
+                quote={quote}
+                author={author}
+              />
+            </PDFViewer>
+          </>
         )}
       </section>
     </>

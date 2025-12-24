@@ -27,15 +27,23 @@ const styles = StyleSheet.create({
   },
 });
 
+interface documentProps {
+  weeksDifference: number;
+  quote: string;
+  author: string;
+}
+
 export const MyDocument = ({
   weeksDifference,
-}: {
-  weeksDifference: number;
-}) => {
+  quote,
+  author,
+}: documentProps) => {
   const maxYears = 75;
 
   const content = [];
   let remaining = weeksDifference;
+
+  console.log(quote, author);
 
   for (let index = 0; index < maxYears; index++) {
     const weeksForThisYear = Math.min(remaining, 52);
@@ -74,14 +82,10 @@ export const MyDocument = ({
               alignSelf: "center",
               textAlign: "center",
             }}
-            id="quote"
           >
-            You could leave life right now. Let that determine what you do and
-            say and think.
+            {quote}
           </Text>
-          <Text style={{ fontSize: 10, alignSelf: "center" }} id="author">
-            - Marcus Aurelius
-          </Text>
+          <Text style={{ fontSize: 10, alignSelf: "center" }}>- {author}</Text>
         </View>
       </Page>
     </Document>

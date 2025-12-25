@@ -33,17 +33,11 @@ interface documentProps {
   author: string;
 }
 
-export const MyDocument = ({
-  weeksDifference,
-  quote,
-  author,
-}: documentProps) => {
+export const Calendar = ({ weeksDifference, quote, author }: documentProps) => {
   const maxYears = 75;
 
   const content = [];
   let remaining = weeksDifference;
-
-  console.log(quote, author);
 
   for (let index = 0; index < maxYears; index++) {
     const weeksForThisYear = Math.min(remaining, 52);

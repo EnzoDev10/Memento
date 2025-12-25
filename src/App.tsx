@@ -4,7 +4,7 @@ import "@/components/Reusables";
 
 import { Form } from "@/features/Form/Form";
 
-import { MyDocument } from "@/features/Document/Document";
+import { Calendar } from "@/features/Document/Calendar";
 import { PDFViewer } from "@react-pdf/renderer";
 import { useEffect, useRef, useState } from "react";
 
@@ -94,7 +94,7 @@ function App() {
               innerRef={iframeRef}
               showToolbar={false}
             >
-              <MyDocument
+              <Calendar
                 weeksDifference={weeksDifference}
                 quote={quote}
                 author={author}

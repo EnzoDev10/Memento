@@ -58,11 +58,11 @@ export const StyledBtn = styled.button`
   border-radius: var(--radius-small);
   padding: var(--spacing-1);
   cursor: pointer;
-  
+
   &:hover {
     background-color: var(--green-7);
   }
-  
+
   &:active {
     background-color: var(--green-5);
   }

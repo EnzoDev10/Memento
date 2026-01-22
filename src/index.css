@@ -1,57 +1,12 @@
 :root {
-    /* Typography */
     --main-font-family: "Fira Code";
-    --lineheight-h1: 115.2px;
-    --lineheight-h2: 72px;
-    --lineheight-h3: 57.6px;
-    --lineheight-h4: 40.8px;
-    --lineheight-h5: 28.8px;
-    --lineheight-h6: 24px;
-    --lineheight-body: 21.6px;
-    --lineheight-input: 15.6px;
 
-    /* Headings */
-    --heading-1: 96px;
-    --heading-2: 60px;
-    --heading-3: 48px;
-    --heading-4: 34px;
-    --heading-5: 24px;
-    --heading-6: 20px;
-    --body-size: 18px;
-    --input-size: 13px;
+    --neutral-bg-dark: hsl(250, 20, 10);
+    --neutral-bg-medium: hsl(250, 20, 30);
+    --neutral-bg-light: hsl(250, 20, 60);
 
-    /* Spacing */
-    --spacing-1: 8px;
-    --spacing-2: 16px;
-    --spacing-3: 24px;
-    --spacing-4: 32px;
-    --spacing-5: 40px;
-    --spacing-6: 48px;
-    --spacing-7: 56px;
-    --spacing-8: 64px;
-
-    --radius-small: 8px;
-    --radius-normal: 16px;
-    --radius-large: 24px;
-
-    /* Colors */
-    --green-1: #0a1610;
-    --green-2: #152d21;
-    --green-3: #1f4331;
-    --green-4: #2a5a41;
-    --green-5: #347052;
-    --green-6: #3e8662;
-    --green-7: #499d72;
-
-    --neutral-50: #f8f9fa;
-    --neutral-100: #e9ecef;
-    --neutral-200: #dee2e6;
-    --neutral-300: #ced4da;
-    --neutral-400: #adb5bd;
-    --neutral-500: #6c757d;
-    --neutral-600: #495057;
-    --neutral-700: #343a40;
-    --neutral-800: #212529;
+    --neutral-text-sharp: hsl(250, 20, 95);
+    --neutral-text-muted: hsl(250, 20, 85);
 }
 
 html {
@@ -70,7 +25,7 @@ body {
 }
 
 *:focus-visible {
-    outline: solid 2px var(--green-6);
+    outline: solid 2px green;
 }
 
 * {

@@ -66,8 +66,8 @@ function App() {
       </section>
       <section
         style={{
-          width: "65%",
-          height: "700px",
+          width: "650px",
+          height: "100%",
           display: "flex",
           justifyContent: "center",
           position: "relative",

@@ -40,14 +40,14 @@ export const CalendarWrapper = styled(Container)`
             font-size: 14px;
 
             &:hover:not(.dia-seleccionado > .dia-boton):not(.rdp-outside) {
-                background-color: var(--green-3);
+                background-color: green;
                 cursor: pointer;
             }
         }
     }
     & .dia-seleccionado {
         .dia-boton {
-            background-color: var(--green-6);
+            background-color: green;
         }
     }
 

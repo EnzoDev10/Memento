@@ -1,12 +1,20 @@
 :root {
     --main-font-family: "Fira Code";
 
-    --neutral-bg-dark: hsl(250, 20, 10);
-    --neutral-bg-medium: hsl(250, 20, 30);
-    --neutral-bg-light: hsl(250, 20, 60);
+    --bg-ultra-dark: hsl(230, 60%, 4%);
+    --bg-dark: hsl(250, 20%, 10%);
+    --bg-medium: hsl(250, 20%, 30%);
+    --bg-light: hsl(250, 20%, 60%);
+    --bg-low-opacity: hsla(250, 20%, 10%, 0.7);
 
-    --neutral-text-sharp: hsl(250, 20, 95);
-    --neutral-text-muted: hsl(250, 20, 85);
+    --text-sharp: hsl(250, 20%, 95%);
+    --text-muted: hsl(250, 20%, 85%);
+
+    --main-font: "merriweather";
+    --secondary-font: "ibm plex sans";
+
+    --padding-section-vertical: 60px;
+    --padding-horizontal: 16px;
 }
 
 html {

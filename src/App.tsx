@@ -11,100 +11,100 @@ import { useEffect, useRef, useState } from "react";
 import { DateContext } from "@/global/DateContext";
 
 function App() {
-  const currentDate = new Date();
-  const [userDate, setUserDate] = useState<Date>(currentDate);
-  const [weeksDifference, setWeeksDifference] = useState<number>(0);
-  const [quote, setQuote] = useState<string>("");
-  const [author, setAuthor] = useState<string>("");
+    const currentDate = new Date();
+    const [userDate, setUserDate] = useState<Date>(currentDate);
+    const [weeksDifference, setWeeksDifference] = useState<number>(0);
+    const [quote, setQuote] = useState<string>("");
+    const [author, setAuthor] = useState<string>("");
 
-  const [change, setChange] = useState(false);
+    const [change, setChange] = useState(false);
 
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [isIframeLoading, setIsIframeLoading] = useState(true);
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+    const [isIframeLoading, setIsIframeLoading] = useState(true);
 
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
+    useEffect(() => {
+        const iframe = iframeRef.current;
+        if (!iframe) return;
 
-    if (iframe.contentDocument?.readyState === "complete") {
-      setIsIframeLoading(false);
-      return;
-    }
+        if (iframe.contentDocument?.readyState === "complete") {
+            setIsIframeLoading(false);
+            return;
+        }
 
-    setIsIframeLoading(true);
+        setIsIframeLoading(true);
 
-    function handleLoad() {
-      setIsIframeLoading(false);
-    }
+        function handleLoad() {
+            setIsIframeLoading(false);
+        }
 
-    iframe.addEventListener("load", handleLoad);
+        iframe.addEventListener("load", handleLoad);
 
-    return () => {
-      iframe.removeEventListener("load", handleLoad);
-    };
-  }, [userDate]);
+        return () => {
+            iframe.removeEventListener("load", handleLoad);
+        };
+    }, [userDate]);
 
-  return (
-    <>
-      <section>
-        <DateContext.Provider
-          value={{
-            userDate,
-            setUserDate,
-            weeksDifference,
-            setWeeksDifference,
-            quote,
-            setQuote,
-            author,
-            setAuthor,
-            change,
-            setChange,
-          }}
-        >
-          <Form />
-        </DateContext.Provider>
-      </section>
-      <section
-        style={{
-          width: "650px",
-          height: "100%",
-          display: "flex",
-          justifyContent: "center",
-          position: "relative",
-        }}
-      >
-        {change && (
-          <>
-            {isIframeLoading && (
-              <h3
+    return (
+        <>
+            <section>
+                <DateContext.Provider
+                    value={{
+                        userDate,
+                        setUserDate,
+                        weeksDifference,
+                        setWeeksDifference,
+                        quote,
+                        setQuote,
+                        author,
+                        setAuthor,
+                        change,
+                        setChange,
+                    }}
+                >
+                    <Form />
+                </DateContext.Provider>
+            </section>
+            <section
                 style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
+                    width: "650px",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    position: "relative",
                 }}
-              >
-                {" "}
-                Cargando...
-              </h3>
-            )}
-
-            <PDFViewer
-              style={{ width: "100%", height: "100%" }}
-              innerRef={iframeRef}
-              showToolbar={false}
             >
-              <Calendar
-                weeksDifference={weeksDifference}
-                quote={quote}
-                author={author}
-              />
-            </PDFViewer>
-          </>
-        )}
-      </section>
-    </>
-  );
+                {change && (
+                    <>
+                        {isIframeLoading && (
+                            <h3
+                                style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                }}
+                            >
+                                {" "}
+                                Cargando...
+                            </h3>
+                        )}
+
+                        <PDFViewer
+                            style={{ width: "100%", height: "100%" }}
+                            innerRef={iframeRef}
+                            showToolbar={false}
+                        >
+                            <Calendar
+                                weeksDifference={weeksDifference}
+                                quote={quote}
+                                author={author}
+                            />
+                        </PDFViewer>
+                    </>
+                )}
+            </section>
+        </>
+    );
 }
 
 export default App;

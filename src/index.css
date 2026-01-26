@@ -1,7 +1,5 @@
 :root {
-    --main-font-family: "Fira Code";
-
-    --bg-ultra-dark: hsl(230, 60%, 4%);
+    --bg-ultra-dark: hsl(250, 50%, 6%);
     --bg-dark: hsl(250, 20%, 10%);
     --bg-medium: hsl(250, 20%, 30%);
     --bg-light: hsl(250, 20%, 60%);
@@ -10,15 +8,14 @@
     --text-sharp: hsl(250, 20%, 95%);
     --text-muted: hsl(250, 20%, 85%);
 
-    --main-font: "merriweather";
-    --secondary-font: "ibm plex sans";
+    --main-font: "Merriweather";
+    --secondary-font: "IBM Plex Sans";
 
     --padding-section-vertical: 60px;
     --padding-horizontal: 16px;
 }
 
 html {
-    background-color: var(--neutral-600);
     width: 100vw;
     height: 100vh;
 }
@@ -30,6 +27,7 @@ html {
 body {
     height: 100%;
     width: 100%;
+    background-color: var(--bg-ultra-dark);
 }
 
 *:focus-visible {
@@ -40,63 +38,25 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--neutral-300);
-    font-family: var(--main-font-family);
+    color: var(--text-sharp);
+    font-family: var(--secondary-font);
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: normal;
-}
-
-h1 {
-    font-size: var(--heading-1);
-    line-height: var(--lineheight-h2);
-}
-
-h2 {
-    font-size: var(--heading-2);
-    line-height: var(--lineheight-h2);
-}
-
 h3 {
-    font-size: var(--heading-3);
-    line-height: var(--lineheight-h3);
+    font-family: var(--main-font);
 }
 
-h4 {
-    font-size: var(--heading-4);
-    line-height: var(--lineheight-h4);
+header p {
+    color: var(--text-muted);
 }
 
-h5 {
-    font-size: var(--heading-5);
-    line-height: var(--lineheight-h5);
+section {
+    padding: 60px 16px;
 }
 
-h6 {
-    font-size: var(--heading-6);
-    line-height: var(--lineheight-h6);
-}
-
-p,
-span,
-div,
-button,
-select,
-label,
-a,
-li,
-td,
-th {
-    line-height: var(--lineheight-body);
-}
-
-input,
-textarea {
-    line-height: var(--lineheight-input);
+@media screen and (min-width: 768px) {
+    section {
+        padding: 100px 16px;
+    }
 }

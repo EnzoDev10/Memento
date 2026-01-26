@@ -2,6 +2,8 @@ import "@/index.css";
 
 import "@/components/Reusables";
 
+import { Hero } from "@/components/Hero";
+
 import { Form } from "@/features/Form/Form";
 
 import { Calendar } from "@/features/Document/Calendar";
@@ -9,6 +11,24 @@ import { PDFViewer } from "@react-pdf/renderer";
 import { useEffect, useRef, useState } from "react";
 
 import { DateContext } from "@/global/DateContext";
+
+import { styled } from "styled-components";
+
+const PDFSection = styled.section`
+    width: clamp(270px, 80vw, 800px);
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    h3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+`;
 
 function App() {
     const currentDate = new Date();
@@ -46,6 +66,7 @@ function App() {
 
     return (
         <>
+            <Hero />
             <section>
                 <DateContext.Provider
                     value={{
@@ -64,30 +85,10 @@ function App() {
                     <Form />
                 </DateContext.Provider>
             </section>
-            <section
-                style={{
-                    width: "650px",
-                    height: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    position: "relative",
-                }}
-            >
+            <PDFSection>
                 {change && (
                     <>
-                        {isIframeLoading && (
-                            <h3
-                                style={{
-                                    position: "absolute",
-                                    top: "50%",
-                                    left: "50%",
-                                    transform: "translate(-50%, -50%)",
-                                }}
-                            >
-                                {" "}
-                                Cargando...
-                            </h3>
-                        )}
+                        {isIframeLoading && <h3> Cargando...</h3>}
 
                         <PDFViewer
                             style={{ width: "100%", height: "100%" }}
@@ -102,7 +103,7 @@ function App() {
                         </PDFViewer>
                     </>
                 )}
-            </section>
+            </PDFSection>
         </>
     );
 }

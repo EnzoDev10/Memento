@@ -31,7 +31,7 @@ body {
 }
 
 *:focus-visible {
-    outline: solid 2px green;
+    outline: solid 2px hsl(250, 51%, 85%);
 }
 
 * {

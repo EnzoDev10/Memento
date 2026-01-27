@@ -1,6 +1,5 @@
 import { StyledInput, StyledWrapper } from "@/components/Reusables";
 import { DateContext } from "@/global/DateContext";
-import { DiceSixIcon } from "@phosphor-icons/react/dist/ssr";
 import { useContext } from "react";
 
 interface QuotesProps {
@@ -32,15 +31,6 @@ export const QuoteSelector = ({ setQuote, setAuthor }: QuotesProps) => {
                         onChange={(e) => handleQuoteChange(e.target.value)}
                         value={quote}
                     />
-                    <button
-                        type='button'
-                        onClick={() => {
-                            setQuote("Esto es una cita escrita por enshique");
-                            setAuthor("Enshique");
-                        }}
-                    >
-                        <DiceSixIcon size={28} />
-                    </button>
                 </StyledInput>
             </StyledWrapper>
             <StyledWrapper>

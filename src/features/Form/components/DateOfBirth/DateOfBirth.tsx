@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { DayPicker } from "react-day-picker";
 import { isValid } from "date-fns";
-import { isValid } from "date-fns";
 
 import { CalendarWrapper } from "@/features/Form/components/DateOfBirth/Calendar";
 import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
@@ -75,12 +74,6 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
             let formattedDate = date.getFullYear() + "-" + month + "-" + day;
 
             setInputValue(formattedDate);
-            let day = ("0" + date.getDate()).slice(-2);
-            let month = ("0" + (date.getMonth() + 1)).slice(-2);
-
-            let formattedDate = date.getFullYear() + "-" + month + "-" + day;
-
-            setInputValue(formattedDate);
             setOpen(false);
             setFormDate(date);
         }
@@ -92,89 +85,87 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
 
         let newDate = new Date(e.target.value);
 
-        let newDate = new Date(e.target.value);
-
         if (isValid(newDate)) {
             setSelectedDate(newDate);
 
             setFormDate(newDate);
-        if (isValid(newDate)) {
-            setSelectedDate(newDate);
+            if (isValid(newDate)) {
+                setSelectedDate(newDate);
 
-            setFormDate(newDate);
-        } else {
-            setSelectedDate(undefined);
+                setFormDate(newDate);
+            } else {
+                setSelectedDate(undefined);
+            }
         }
-    };
 
-    const customClassNames = {
-        root: "mi-calendario-base",
-        caption: "header-mes",
-        month_grid: "meses",
-        weekday: "nombre-dia",
-        cell: "dia-celda",
-        day: "dia",
-        selected: "dia-seleccionado",
-        caption_label: "label",
-        day_button: "dia-boton",
-        dropdown: "selector-mes-año",
-    };
+        const customClassNames = {
+            root: "mi-calendario-base",
+            caption: "header-mes",
+            month_grid: "meses",
+            weekday: "nombre-dia",
+            cell: "dia-celda",
+            day: "dia",
+            selected: "dia-seleccionado",
+            caption_label: "label",
+            day_button: "dia-boton",
+            dropdown: "selector-mes-año",
+        };
 
-    return (
-        <Dialog.Root open={open} onOpenChange={setOpen}>
-            <StyledWrapper>
-                <h6>Fecha de nacimiento</h6>
+        return (
+            <Dialog.Root open={open} onOpenChange={setOpen}>
+                <StyledWrapper>
+                    <h6>Fecha de nacimiento</h6>
 
-                <StyledInput>
-                    <input
-                        id='date-input'
-                        type='date'
-                        type='date'
-                        value={inputValue}
-                        placeholder='MM/dd/yyyy'
-                        onChange={handleInputChange}
-                        name='date'
-                        onClick={(e) => {
-                            e.preventDefault();
-                        }}
-                    />
-                    <Dialog.Trigger asChild>
-                        <button>
-                            <CalendarBlankIcon size={24} />
-                            <CalendarBlankIcon size={24} />
-                        </button>
-                    </Dialog.Trigger>
-                </StyledInput>
-            </StyledWrapper>
-
-            <Dialog.Portal>
-                <StyledOverlay />
-                <StyledDialogContent>
-                    <VisuallyHidden>
-                        <Dialog.Title>Elige una fecha</Dialog.Title>
-                        <Dialog.Description>
-                            Permite elegir una fecha de nacimiento para crear el
-                            calendario de memento mori.
-                        </Dialog.Description>
-                    </VisuallyHidden>
-                    <CalendarWrapper>
-                        <Dialog.Close asChild>
-                            <StyledCloseBtn>
-                                <XIcon size={32} />
-                            </StyledCloseBtn>
-                        </Dialog.Close>
-                        <DayPicker
-                            autoFocus
-                            mode='single'
-                            selected={selectedDate}
-                            onSelect={handleDayPickerSelect}
-                            classNames={customClassNames}
-                            captionLayout='dropdown'
-                            hideNavigation
+                    <StyledInput>
+                        <input
+                            id='date-input'
+                            type='date'
+                            value={inputValue}
+                            placeholder='MM/dd/yyyy'
+                            onChange={handleInputChange}
+                            name='date'
+                            onClick={(e) => {
+                                e.preventDefault();
+                            }}
                         />
-                    </CalendarWrapper>
-                </StyledDialogContent>
-            </Dialog.Portal>
-        </Dialog.Root>
-    );
+                        <Dialog.Trigger asChild>
+                            <button>
+                                <CalendarBlankIcon size={24} />
+                                <CalendarBlankIcon size={24} />
+                            </button>
+                        </Dialog.Trigger>
+                    </StyledInput>
+                </StyledWrapper>
+
+                <Dialog.Portal>
+                    <StyledOverlay />
+                    <StyledDialogContent>
+                        <VisuallyHidden>
+                            <Dialog.Title>Elige una fecha</Dialog.Title>
+                            <Dialog.Description>
+                                Permite elegir una fecha de nacimiento para
+                                crear el calendario de memento mori.
+                            </Dialog.Description>
+                        </VisuallyHidden>
+                        <CalendarWrapper>
+                            <Dialog.Close asChild>
+                                <StyledCloseBtn>
+                                    <XIcon size={32} />
+                                </StyledCloseBtn>
+                            </Dialog.Close>
+                            <DayPicker
+                                autoFocus
+                                mode='single'
+                                selected={selectedDate}
+                                onSelect={handleDayPickerSelect}
+                                classNames={customClassNames}
+                                captionLayout='dropdown'
+                                hideNavigation
+                            />
+                        </CalendarWrapper>
+                    </StyledDialogContent>
+                </Dialog.Portal>
+            </Dialog.Root>
+        );
+    };
 };

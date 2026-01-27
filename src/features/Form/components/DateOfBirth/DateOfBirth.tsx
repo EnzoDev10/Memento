@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { DayPicker } from "react-day-picker";
 import { isValid } from "date-fns";
+import { isValid } from "date-fns";
 
 import { CalendarWrapper } from "@/features/Form/components/DateOfBirth/Calendar";
 import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
@@ -74,6 +75,12 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
             let formattedDate = date.getFullYear() + "-" + month + "-" + day;
 
             setInputValue(formattedDate);
+            let day = ("0" + date.getDate()).slice(-2);
+            let month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+            let formattedDate = date.getFullYear() + "-" + month + "-" + day;
+
+            setInputValue(formattedDate);
             setOpen(false);
             setFormDate(date);
         }
@@ -85,6 +92,12 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
 
         let newDate = new Date(e.target.value);
 
+        let newDate = new Date(e.target.value);
+
+        if (isValid(newDate)) {
+            setSelectedDate(newDate);
+
+            setFormDate(newDate);
         if (isValid(newDate)) {
             setSelectedDate(newDate);
 
@@ -116,6 +129,7 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
                     <input
                         id='date-input'
                         type='date'
+                        type='date'
                         value={inputValue}
                         placeholder='MM/dd/yyyy'
                         onChange={handleInputChange}
@@ -126,6 +140,7 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
                     />
                     <Dialog.Trigger asChild>
                         <button>
+                            <CalendarBlankIcon size={24} />
                             <CalendarBlankIcon size={24} />
                         </button>
                     </Dialog.Trigger>

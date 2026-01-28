@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { DayPicker } from "react-day-picker";
-import { format, isValid, parse } from "date-fns";
+import { isValid } from "date-fns";
 
 import { CalendarWrapper } from "@/features/Form/components/DateOfBirth/Calendar";
 import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
@@ -68,7 +68,12 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
         } else {
             setSelectedDate(date);
 
-            setInputValue(format(date, "MM/dd/yyyy"));
+            let day = ("0" + date.getDate()).slice(-2);
+            let month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+            let formattedDate = date.getFullYear() + "-" + month + "-" + day;
+
+            setInputValue(formattedDate);
             setOpen(false);
             setFormDate(date);
         }
@@ -77,10 +82,13 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setChange(false);
         setInputValue(e.target.value); // Sincroniza el valor del input
-        const parsedDate = parse(e.target.value, "MM/dd/yyyy", new Date());
 
-        if (isValid(parsedDate)) {
-            setSelectedDate(parsedDate);
+        let newDate = new Date(e.target.value);
+
+        if (isValid(newDate)) {
+            setSelectedDate(newDate);
+
+            setFormDate(newDate);
         } else {
             setSelectedDate(undefined);
         }
@@ -102,20 +110,23 @@ export const DateOfBirth = ({ setFormDate: setFormDate }: DatePickerProps) => {
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
             <StyledWrapper>
-                <h6>Fecha de nacimiento</h6>
+                <label>Birth Date</label>
 
                 <StyledInput>
                     <input
                         id='date-input'
-                        type='text'
+                        type='date'
                         value={inputValue}
                         placeholder='MM/dd/yyyy'
                         onChange={handleInputChange}
                         name='date'
+                        onClick={(e) => {
+                            e.preventDefault();
+                        }}
                     />
                     <Dialog.Trigger asChild>
                         <button>
-                            <CalendarBlankIcon size={28} />
+                            <CalendarBlankIcon size={24} />
                         </button>
                     </Dialog.Trigger>
                 </StyledInput>

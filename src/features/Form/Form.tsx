@@ -1,4 +1,4 @@
-import { Container, StyledBtn } from "@/components/Reusables";
+import { Container, StyledBtn, StyledWrapper } from "@/components/Reusables";
 import { DateOfBirth } from "@/features/Form/components/DateOfBirth/DateOfBirth";
 import { DateContext } from "@/global/DateContext";
 import { differenceInWeeks } from "date-fns";
@@ -6,9 +6,42 @@ import { useContext, useState } from "react";
 import { QuoteSelector } from "@/features/Form/components/QuoteSelector/QuoteSelector";
 import styled from "styled-components";
 
-const FormContainer = styled(Container)``;
+import { devices } from "@/styles/breakpoints";
 
-const StyledForm = styled.form``;
+const FormContainer = styled(Container)`
+    padding: 16px;
+    border-radius: 8px;
+    background-color: var(--bg-dark);
+    min-width: 300px;
+`;
+
+const StyledForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    h2 {
+        font-size: 25px;
+
+        @media ${devices.mobile} {
+            font-size: 22px;
+        }
+    }
+
+    label {
+        font-size: 20px;
+
+        @media ${devices.mobile} {
+            font-size: 18px;
+        }
+    }
+
+    ${StyledWrapper} {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+`;
 
 export const Form = () => {
     const [birthday, setBirthday] = useState<Date>(new Date());
@@ -25,11 +58,11 @@ export const Form = () => {
     return (
         <FormContainer>
             <StyledForm noValidate>
-                <h5>Crea tu calendario</h5>
+                <h2>Create your calendar</h2>
                 <DateOfBirth setFormDate={setBirthday} />
                 <QuoteSelector setAuthor={setAuthor} setQuote={setQuote} />
                 <StyledBtn type='button' onClick={handleFormSubmit}>
-                    Crear
+                    Create
                 </StyledBtn>
             </StyledForm>
         </FormContainer>

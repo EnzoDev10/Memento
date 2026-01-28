@@ -1,6 +1,6 @@
 :root {
     --bg-ultra-dark: hsl(250, 50%, 6%);
-    --bg-dark: hsl(250, 20%, 10%);
+    --bg-dark: hsl(250, 20%, 15%);
     --bg-medium: hsl(250, 20%, 30%);
     --bg-light: hsl(250, 20%, 60%);
     --bg-low-opacity: hsla(250, 20%, 10%, 0.7);
@@ -31,7 +31,7 @@ body {
 }
 
 *:focus-visible {
-    outline: solid 2px green;
+    outline: solid 2px hsl(250, 51%, 85%);
 }
 
 * {
@@ -43,8 +43,10 @@ body {
 }
 
 h1,
-h3 {
+h2,
+label {
     font-family: var(--main-font);
+    font-weight: normal;
 }
 
 header p {

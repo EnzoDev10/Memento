@@ -32,7 +32,7 @@ const StyledDialogContent = styled(Dialog.Content)`
 `;
 
 const StyledOverlay = styled(Dialog.Overlay)`
-    background-color: color-mix(in srgb, green 70%, transparent);
+    background-color: color-mix(in srgb, var(--bg-ultra-dark) 70%, transparent);
     position: fixed;
     inset: 0;
 `;
@@ -58,7 +58,7 @@ export const DateOfBirth = ({
 
     const [inputValue, setInputValue] = useState("");
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     const { setChange } = useContext(DateContext);
 
@@ -155,6 +155,7 @@ export const DateOfBirth = ({
                             onSelect={handleDayPickerSelect}
                             classNames={customClassNames}
                             captionLayout='dropdown'
+                            defaultMonth={selectedDate}
                             hideNavigation
                         />
                     </CalendarWrapper>

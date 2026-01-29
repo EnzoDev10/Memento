@@ -5,9 +5,13 @@ import "@/index.css";
 import { Container } from "@/components/Reusables";
 
 export const CalendarWrapper = styled(Container)`
-    width: fit-content;
-    padding: var(--spacing-2);
-    background: grey;
+    background-color: var(--bg-dark);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid var(--text-muted);
 
     .mi-calendario-base {
         width: 100%;
@@ -22,6 +26,8 @@ export const CalendarWrapper = styled(Container)`
         font-size: var(--body-size);
         font-weight: normal;
         height: 48px;
+        font-family: var(--main-font);
+        font-size: 18px;
     }
 
     & .dia {
@@ -35,35 +41,29 @@ export const CalendarWrapper = styled(Container)`
             justify-content: center;
             background: transparent;
             border: none;
-            border-radius: var(--radius-small);
-            color: var(--neutral-300);
+            border-radius: 8px;
             font-size: 14px;
 
             &:hover:not(.dia-seleccionado > .dia-boton):not(.rdp-outside) {
-                background-color: green;
+                background-color: var(--bg-medium);
                 cursor: pointer;
             }
         }
     }
     & .dia-seleccionado {
         .dia-boton {
-            background-color: green;
+            background-color: var(--bg-light);
         }
     }
 
     .selector-mes-año {
         background-color: transparent;
         border: none;
-        padding: var(--spacing-1);
-        border-radius: var(--radius-small);
-        font-size: var(--body-size);
         margin-bottom: var(--spacing-1);
         padding-top: 0;
         padding-left: 14px;
-
-        &:first-child {
-            margin-right: 10px;
-        }
+        font-family: var(--main-font);
+        font-size: 18px;
     }
     .label {
         display: none;

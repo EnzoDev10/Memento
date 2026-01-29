@@ -29,6 +29,17 @@ export const StyledInput = styled.div`
         height: 24px;
         position: absolute;
         right: 5px;
+
+        cursor: pointer;
+        transition: 250ms ease-in-out;
+
+        &:hover {
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(1px);
+        }
     }
 `;
 
@@ -38,10 +49,15 @@ export const StyledBtn = styled.button`
     height: 35px;
     font-family: var(--main-font);
     background-color: var(--bg-medium);
+    cursor: pointer;
+    transition: 250ms ease-in-out;
+
     &:hover {
+        transform: translateY(-2px);
     }
 
     &:active {
+        background-color: var(--bg-ultra-dark);
     }
 `;
 

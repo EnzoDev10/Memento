@@ -44,3 +44,7 @@ export const StyledBtn = styled.button`
     &:active {
     }
 `;
+
+export const ErrorMessage = styled.p`
+    color: var(--error-color);
+`;

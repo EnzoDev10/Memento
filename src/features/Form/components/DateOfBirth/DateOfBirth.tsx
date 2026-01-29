@@ -58,7 +58,7 @@ export const DateOfBirth = ({
 
     const [inputValue, setInputValue] = useState("");
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     const { setChange } = useContext(DateContext);
 

@@ -62,4 +62,6 @@ img {
     min-height: 85px;
 }
 
-
+button {
+    cursor: pointer;
+}

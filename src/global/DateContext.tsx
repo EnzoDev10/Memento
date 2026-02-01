@@ -9,9 +9,10 @@ interface DateContextType {
     setQuote: React.Dispatch<React.SetStateAction<string>>;
     author: string;
     setAuthor: React.Dispatch<React.SetStateAction<string>>;
-    change: boolean;
-    setChange: React.Dispatch<React.SetStateAction<boolean>>;
+    showDocument: boolean;
+    setShowDocument: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 export const DateContext = createContext<DateContextType>({
     userDate: new Date(),
     setUserDate: () => {},
@@ -21,6 +22,6 @@ export const DateContext = createContext<DateContextType>({
     setQuote: () => {},
     author: "Marcus Aurelius",
     setAuthor: () => {},
-    change: false,
-    setChange: () => {},
+    showDocument: false,
+    setShowDocument: () => {},
 });

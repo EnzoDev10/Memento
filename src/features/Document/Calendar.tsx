@@ -48,7 +48,14 @@ export const Calendar = ({ weeksDifference, quote, author }: documentProps) => {
     return (
         <Document>
             <Page size='A4' style={styles.page}>
-                <Text style={{ fontSize: 24, marginTop: 10 }}>
+                <Text
+                    style={{
+                        fontSize: 24,
+                        marginTop: 10,
+                        textAlign: "center",
+                        width: "100%",
+                    }}
+                >
                     Memento Mori
                 </Text>
 

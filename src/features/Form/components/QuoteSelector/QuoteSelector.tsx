@@ -32,7 +32,11 @@ const AnimatedWrapper = styled.div`
 `;
 
 export const QuoteSelector = ({ setQuote, setAuthor }: QuotesProps) => {
-    const { setChange, quote, author } = useContext(DateContext);
+    const {
+        setShowDocument,
+        quote,
+        author,
+    } = useContext(DateContext);
 
     const [showAuthorInput, setShowAuthorInput] = useState(false);
 
@@ -44,12 +48,12 @@ export const QuoteSelector = ({ setQuote, setAuthor }: QuotesProps) => {
         }
 
         setQuote(value);
-        setChange(false);
+        setShowDocument(false);
     };
 
     const handleAuthorChange = (value: string) => {
         setAuthor(value);
-        setChange(false);
+        setShowDocument(false);
     };
 
     return (

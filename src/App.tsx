@@ -7,27 +7,21 @@ import { Hero } from "@/components/Hero";
 import { Form } from "@/features/Form/Form";
 
 import { Calendar } from "@/features/Document/Calendar";
-import { PDFViewer } from "@react-pdf/renderer";
 import { useEffect, useRef, useState } from "react";
 
 import { DateContext } from "@/global/DateContext";
 
 import { styled } from "styled-components";
+import { StyledBtn, StyledPDFViewer } from "@/components/Reusables";
+import { ReusableDialog } from "./components/ReusableDialog";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
-const PDFSection = styled.section`
-    width: clamp(270px, 80vw, 800px);
-
-    height: 100%;
+const StyledButtonsContainer = styled.article`
+    height: 20%;
     display: flex;
     justify-content: center;
-    position: relative;
-
-    h3 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+    align-items: center;
+    gap: 20px;
 `;
 
 function App() {
@@ -37,32 +31,28 @@ function App() {
     const [quote, setQuote] = useState<string>("");
     const [author, setAuthor] = useState<string>("");
 
-    const [change, setChange] = useState(false);
+    const [showDocument, setShowDocument] = useState(false);
+
+    const [open, setOpen] = useState(false);
 
     const iframeRef = useRef<HTMLIFrameElement>(null);
-    const [isIframeLoading, setIsIframeLoading] = useState(true);
 
     useEffect(() => {
-        const iframe = iframeRef.current;
-        if (!iframe) return;
-
-        if (iframe.contentDocument?.readyState === "complete") {
-            setIsIframeLoading(false);
-            return;
+        if (showDocument) {
+            console.log("enrique");
+            setOpen(true);
+        } else {
+            console.log("andreaaa");
         }
+    }, [showDocument]);
 
-        setIsIframeLoading(true);
-
-        function handleLoad() {
-            setIsIframeLoading(false);
-        }
-
-        iframe.addEventListener("load", handleLoad);
-
-        return () => {
-            iframe.removeEventListener("load", handleLoad);
-        };
-    }, [userDate]);
+    const calendar = (
+        <Calendar
+            weeksDifference={weeksDifference}
+            quote={quote}
+            author={author}
+        />
+    );
 
     return (
         <>
@@ -78,33 +68,43 @@ function App() {
                         setQuote,
                         author,
                         setAuthor,
-                        change,
-                        setChange,
+                        showDocument,
+                        setShowDocument,
                     }}
                 >
                     <Form />
                 </DateContext.Provider>
             </section>
 
-            <PDFSection>
-                {change && (
+            <ReusableDialog
+                title='title'
+                description='descriotion'
+                open={open}
+                setOpen={setOpen}
+            >
+                {showDocument && (
                     <>
-                        {isIframeLoading && <h3> Cargando...</h3>}
-
-                        <PDFViewer
-                            style={{ width: "100%", height: "100%" }}
+                        <StyledPDFViewer
                             innerRef={iframeRef}
                             showToolbar={false}
                         >
-                            <Calendar
-                                weeksDifference={weeksDifference}
-                                quote={quote}
-                                author={author}
-                            />
-                        </PDFViewer>
+                            {calendar}
+                        </StyledPDFViewer>
+                        <StyledButtonsContainer>
+                            <PDFDownloadLink
+                                document={calendar}
+                                fileName='Memento-Mori-calendar'
+                                style={{}}
+                            >
+                                <StyledBtn>Download</StyledBtn>
+                            </PDFDownloadLink>
+                            <StyledBtn onClick={() => setOpen(false)}>
+                                Close
+                            </StyledBtn>
+                        </StyledButtonsContainer>
                     </>
                 )}
-            </PDFSection>
+            </ReusableDialog>
         </>
     );
 }

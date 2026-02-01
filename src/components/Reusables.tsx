@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "@/index.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { devices } from "@/styles/breakpoints";
+import { PDFViewer } from "@react-pdf/renderer";
 
 export const StyledSection = styled.section`
     padding: 80px 16px;
@@ -37,7 +38,6 @@ export const StyledInput = styled.div`
         right: 5px;
         top: 6px;
 
-        cursor: pointer;
         transition: 250ms ease-in-out;
 
         &:hover {
@@ -53,11 +53,12 @@ export const StyledInput = styled.div`
 export const StyledBtn = styled.button`
     border: none;
     border-radius: 4px;
-    height: 35px;
     font-family: var(--main-font);
     background-color: var(--bg-medium);
-    cursor: pointer;
     transition: 250ms ease-in-out;
+
+    padding: 9px 12px;
+    text-align: center;
 
     &:hover {
         transform: translateY(-2px);
@@ -108,14 +109,20 @@ export const StyledDialogContent = styled(Dialog.Content)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90vw;
-    max-width: 500px;
-    max-height: 85vh;
-    padding: 25px;
+    width: fit-content;
+
     display: flex;
     justify-content: center;
+
+    height: fit-content;
 
     &:focus {
         outline: none;
     }
+`;
+
+export const StyledPDFViewer = styled(PDFViewer)`
+    width: 100%;
+    height: 100%;
+    max-width: 90vw;
 `;

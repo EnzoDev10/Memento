@@ -50,17 +50,22 @@ export const Form = () => {
 
     const [error, setError] = useState(false);
 
-    const { setUserDate, setWeeksDifference, setAuthor, setQuote, setChange } =
-        useContext(DateContext);
+    const {
+        setUserDate,
+        setWeeksDifference,
+        setAuthor,
+        setQuote,
+        setShowDocument,
+    } = useContext(DateContext);
 
     const handleFormSubmit = () => {
         if (birthday) {
             let differenceWithPresent = differenceInWeeks(new Date(), birthday);
 
-            if (differenceWithPresent > 1) {
+            if (differenceWithPresent >= 1) {
                 setWeeksDifference(differenceWithPresent);
                 setUserDate(birthday);
-                setChange(true);
+                setShowDocument(true);
             } else {
                 setError(true);
             }

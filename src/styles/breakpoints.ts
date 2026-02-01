@@ -4,7 +4,7 @@ interface breakpoints {
 }
 
 const size: breakpoints = {
-    mobile: "450px",
+    mobile: "750px",
     desktop: "1440px",
 };
 

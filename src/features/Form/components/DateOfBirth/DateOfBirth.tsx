@@ -32,11 +32,11 @@ export const DateOfBirth = ({
 
     const [open, setOpen] = useState(false);
 
-    const { setChange } = useContext(DateContext);
+    const { setShowDocument } = useContext(DateContext);
 
     const handleDayPickerSelect = (date: Date | undefined) => {
         setError(false);
-        setChange(false);
+        setShowDocument(false);
 
         if (!date) {
             setInputValue("");
@@ -56,7 +56,7 @@ export const DateOfBirth = ({
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setError(false);
-        setChange(false);
+        setShowDocument(false);
 
         setInputValue(e.target.value); // Sincroniza el valor del input
 
@@ -96,11 +96,9 @@ export const DateOfBirth = ({
                             e.preventDefault();
                         }}
                     />
-                    <Dialog.Trigger asChild>
-                        <button>
-                            <CalendarBlankIcon size={24} />
-                        </button>
-                    </Dialog.Trigger>
+                    <button type='button' onClick={() => setOpen(!open)}>
+                        <CalendarBlankIcon size={24} />
+                    </button>
                 </StyledInput>
             </div>
 

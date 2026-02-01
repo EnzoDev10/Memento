@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 
 import { DayPicker } from "react-day-picker";
 
-import { CalendarWrapper } from "@/features/Form/components/DateOfBirth/Calendar";
+import { CalendarWrapper } from "@/features/Form/components/DateOfBirth/DatePickerStyles";
 import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import * as Dialog from "@radix-ui/react-dialog";

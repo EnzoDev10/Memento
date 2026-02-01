@@ -27,6 +27,7 @@ html {
 }
 
 body {
+    overflow-x: hidden;
     height: 100%;
     width: 100%;
     background-color: var(--bg-ultra-dark);
@@ -55,12 +56,10 @@ header p {
     color: var(--text-muted);
 }
 
-section {
-    padding: 60px 16px;
+img {
+    height: 20vw;
+    max-height: 200px;
+    min-height: 85px;
 }
 
-@media screen and (min-width: 768px) {
-    section {
-        padding: 100px 16px;
-    }
-}
+

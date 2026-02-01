@@ -1,4 +1,4 @@
-import { StyledInput, StyledWrapper } from "@/components/Reusables";
+import { StyledInput } from "@/components/Reusables";
 import { DateContext } from "@/global/DateContext";
 import { useContext, useState } from "react";
 import styled, { keyframes } from "styled-components";
@@ -26,7 +26,7 @@ const animationTest = keyframes`
 
 `;
 
-const AnimatedWrapper = styled(StyledWrapper)`
+const AnimatedWrapper = styled.div`
     animation: ${animationTest} 500ms ease-in-out forwards;
     position: relative;
 `;
@@ -54,7 +54,7 @@ export const QuoteSelector = ({ setQuote, setAuthor }: QuotesProps) => {
 
     return (
         <>
-            <StyledWrapper>
+            <div>
                 <label>Quote</label>
                 <StyledInput>
                     <input
@@ -64,7 +64,7 @@ export const QuoteSelector = ({ setQuote, setAuthor }: QuotesProps) => {
                         value={quote}
                     />
                 </StyledInput>
-            </StyledWrapper>
+            </div>
 
             {showAuthorInput && (
                 <AnimatedWrapper>

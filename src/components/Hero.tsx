@@ -3,8 +3,9 @@ import skull from "@/assets/Icons/skull.svg";
 import hourglass from "@/assets/Icons/hourglass.svg";
 
 import styled from "styled-components";
+import { StyledSection } from "./Reusables";
 
-const HeroContainer = styled.section`
+const HeroContainer = styled(StyledSection)`
     display: flex;
     flex-direction: column;
     gap: 64px;
@@ -22,12 +23,6 @@ const IconsContainer = styled.article`
     display: flex;
     justify-content: center;
     gap: 10vw;
-
-    img {
-        height: 20vw;
-        max-height: 200px;
-        min-height: 85px;
-    }
 `;
 
 export const Hero = () => {

@@ -1,4 +1,4 @@
-import { Container, StyledBtn, StyledWrapper } from "@/components/Reusables";
+import { StyledBtn, StyledSection } from "@/components/Reusables";
 import { DateOfBirth } from "@/features/Form/components/DateOfBirth/DateOfBirth";
 import { DateContext } from "@/global/DateContext";
 import { differenceInWeeks } from "date-fns";
@@ -10,7 +10,7 @@ import { devices } from "@/styles/breakpoints";
 
 import { ErrorMessage } from "@/components/Reusables";
 
-const FormContainer = styled(Container)`
+const FormContainer = styled.article`
     padding: 16px;
     border-radius: 8px;
     background-color: var(--bg-dark);
@@ -38,7 +38,7 @@ const StyledForm = styled.form`
         }
     }
 
-    ${StyledWrapper} {
+    div {
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -70,18 +70,23 @@ export const Form = () => {
     };
 
     return (
-        <FormContainer>
-            <StyledForm noValidate>
-                <h2>Create your calendar</h2>
-                {error && (
-                    <ErrorMessage>Introduce una fecha valida </ErrorMessage>
-                )}
-                <DateOfBirth setFormDate={setBirthday} setError={setError} />
-                <QuoteSelector setAuthor={setAuthor} setQuote={setQuote} />
-                <StyledBtn type='button' onClick={handleFormSubmit}>
-                    Create
-                </StyledBtn>
-            </StyledForm>
-        </FormContainer>
+        <StyledSection>
+            <FormContainer>
+                <StyledForm noValidate>
+                    <h2>Create your calendar</h2>
+                    {error && (
+                        <ErrorMessage>Introduce una fecha valida </ErrorMessage>
+                    )}
+                    <DateOfBirth
+                        setFormDate={setBirthday}
+                        setError={setError}
+                    />
+                    <QuoteSelector setAuthor={setAuthor} setQuote={setQuote} />
+                    <StyledBtn type='button' onClick={handleFormSubmit}>
+                        Create
+                    </StyledBtn>
+                </StyledForm>
+            </FormContainer>
+        </StyledSection>
     );
 };

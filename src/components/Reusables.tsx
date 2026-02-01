@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 import "@/index.css";
+import * as Dialog from "@radix-ui/react-dialog";
+import { devices } from "@/styles/breakpoints";
 
-export const Container = styled.div``;
+export const StyledSection = styled.section`
+    padding: 80px 16px;
 
-export const StyledWrapper = styled.div``;
+    @media ${devices.mobile} {
+        padding: 40px 16px;
+    }
+`;
 
 export const StyledInput = styled.div`
     height: fit-content;
@@ -29,6 +35,7 @@ export const StyledInput = styled.div`
         height: 24px;
         position: absolute;
         right: 5px;
+        top: 6px;
 
         cursor: pointer;
         transition: 250ms ease-in-out;
@@ -63,4 +70,52 @@ export const StyledBtn = styled.button`
 
 export const ErrorMessage = styled.p`
     color: var(--error-color);
+`;
+
+export const Loading = styled.article`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 50px;
+
+    width: 100%;
+    height: 100%;
+
+    h3 {
+        font-family: var(--main-font);
+        text-align: center;
+    }
+`;
+
+export const StyledOverlay = styled(Dialog.Overlay)`
+    background-color: color-mix(in srgb, var(--bg-ultra-dark) 70%, transparent);
+    position: fixed;
+    inset: 0;
+`;
+
+export const StyledCloseBtn = styled(StyledBtn)`
+    background: transparent;
+    align-self: flex-end;
+    padding: 0;
+`;
+
+export const StyledDialogContent = styled(Dialog.Content)`
+    background-color: var(--gray-1);
+    border-radius: 6px;
+    box-shadow: var(--shadow-6);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 500px;
+    max-height: 85vh;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+
+    &:focus {
+        outline: none;
+    }
 `;

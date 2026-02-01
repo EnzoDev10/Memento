@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 import "@/index.css";
 
-import { Container } from "@/components/Reusables";
-
-export const CalendarWrapper = styled(Container)`
+export const CalendarWrapper = styled.div`
     background-color: var(--bg-dark);
     border-radius: 16px;
     padding: 16px;

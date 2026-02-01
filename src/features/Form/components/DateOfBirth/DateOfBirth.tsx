@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import styled from "styled-components";
 
 import { DayPicker } from "react-day-picker";
 
@@ -8,40 +7,13 @@ import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { StyledInput, StyledBtn, StyledWrapper } from "@/components/Reusables";
+import {
+    StyledInput,
+    StyledOverlay,
+    StyledCloseBtn,
+    StyledDialogContent,
+} from "@/components/Reusables";
 import { DateContext } from "@/global/DateContext";
-
-const StyledDialogContent = styled(Dialog.Content)`
-    background-color: var(--gray-1);
-    border-radius: 6px;
-    box-shadow: var(--shadow-6);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90vw;
-    max-width: 500px;
-    max-height: 85vh;
-    padding: 25px;
-    display: flex;
-    justify-content: center;
-
-    &:focus {
-        outline: none;
-    }
-`;
-
-const StyledOverlay = styled(Dialog.Overlay)`
-    background-color: color-mix(in srgb, var(--bg-ultra-dark) 70%, transparent);
-    position: fixed;
-    inset: 0;
-`;
-
-const StyledCloseBtn = styled(StyledBtn)`
-    background: transparent;
-    align-self: flex-end;
-    padding: 0;
-`;
 
 interface DatePickerProps {
     setFormDate: (date: Date) => void;
@@ -58,7 +30,7 @@ export const DateOfBirth = ({
 
     const [inputValue, setInputValue] = useState("");
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     const { setChange } = useContext(DateContext);
 
@@ -109,7 +81,7 @@ export const DateOfBirth = ({
 
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
-            <StyledWrapper>
+            <div>
                 <label>date of birth</label>
 
                 <StyledInput>
@@ -130,7 +102,7 @@ export const DateOfBirth = ({
                         </button>
                     </Dialog.Trigger>
                 </StyledInput>
-            </StyledWrapper>
+            </div>
 
             <Dialog.Portal>
                 <StyledOverlay />

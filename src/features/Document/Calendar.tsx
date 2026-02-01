@@ -1,7 +1,18 @@
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import {
+    Page,
+    Text,
+    View,
+    Document,
+    StyleSheet,
+    Font,
+} from "@react-pdf/renderer";
 
 import "@/index.css";
 import { Year } from "@/features/Document/Year";
+
+import Merriweather from "./fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf";
+
+Font.register({ family: "Merriweather", src: Merriweather });
 
 const styles = StyleSheet.create({
     page: {
@@ -9,6 +20,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#e9ecef",
         alignItems: "center",
         gap: 8,
+        fontFamily: "Merriweather",
     },
     weeksContainer: {
         alignSelf: "center",

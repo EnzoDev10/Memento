@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { devices } from "@/styles/breakpoints";
 
 import { ErrorMessage } from "@/components/Reusables";
+import { Extras } from "./components/Extras/Extras";
 
 const FormContainer = styled.article`
     padding: 16px;
@@ -50,13 +51,8 @@ export const Form = () => {
 
     const [error, setError] = useState(false);
 
-    const {
-        setUserDate,
-        setWeeksDifference,
-        setAuthor,
-        setQuote,
-        setShowDocument,
-    } = useContext(DateContext);
+    const { setUserDate, setWeeksDifference, setShowDocument } =
+        useContext(DateContext);
 
     const handleFormSubmit = () => {
         if (birthday) {
@@ -86,7 +82,9 @@ export const Form = () => {
                         setFormDate={setBirthday}
                         setError={setError}
                     />
-                    <QuoteSelector setAuthor={setAuthor} setQuote={setQuote} />
+                    <QuoteSelector />
+
+                    <Extras />
                     <StyledBtn type='button' onClick={handleFormSubmit}>
                         Create
                     </StyledBtn>

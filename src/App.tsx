@@ -10,6 +10,7 @@ import { Calendar } from "@/features/Document/Calendar";
 import { useEffect, useRef, useState } from "react";
 
 import { DateContext } from "@/global/DateContext";
+import { CustomizationContext } from "@/global/customizationContext";
 
 import { styled } from "styled-components";
 import { StyledBtn, StyledPDFViewer } from "@/components/Reusables";
@@ -28,10 +29,12 @@ function App() {
     const currentDate = new Date();
     const [userDate, setUserDate] = useState<Date>(currentDate);
     const [weeksDifference, setWeeksDifference] = useState<number>(0);
-    const [quote, setQuote] = useState<string>("");
-    const [author, setAuthor] = useState<string>("");
-
     const [showDocument, setShowDocument] = useState(false);
+
+    const [quote, setQuote] = useState("");
+    const [author, setAuthor] = useState("");
+    const [squareColor, setSquareColor] = useState("");
+    const [strokeColor, setStrokeColor] = useState("");
 
     const [open, setOpen] = useState(false);
 
@@ -39,10 +42,7 @@ function App() {
 
     useEffect(() => {
         if (showDocument) {
-            console.log("enrique");
             setOpen(true);
-        } else {
-            console.log("andreaaa");
         }
     }, [showDocument]);
 
@@ -51,60 +51,61 @@ function App() {
             weeksDifference={weeksDifference}
             quote={quote}
             author={author}
+            square={squareColor}
+            stroke={strokeColor}
         />
     );
 
     return (
         <>
-            <Hero />
-            <section>
+            <CustomizationContext.Provider
+                value={{
+                    quote,
+                    setQuote,
+                    author,
+                    setAuthor,
+                    squareColor,
+                    setSquareColor,
+                    strokeColor,
+                    setStrokeColor,
+                }}
+            >
+                <Hero />
                 <DateContext.Provider
                     value={{
                         userDate,
                         setUserDate,
                         weeksDifference,
                         setWeeksDifference,
-                        quote,
-                        setQuote,
-                        author,
-                        setAuthor,
                         showDocument,
                         setShowDocument,
                     }}
                 >
                     <Form />
                 </DateContext.Provider>
-            </section>
 
-            <ReusableDialog
-                title='title'
-                description='descriotion'
-                open={open}
-                setOpen={setOpen}
-            >
-                {showDocument && (
-                    <>
-                        <StyledPDFViewer
-                            innerRef={iframeRef}
-                            showToolbar={false}
+                <ReusableDialog
+                    title='title'
+                    description='descriotion'
+                    open={open}
+                    setOpen={setOpen}
+                >
+                    <StyledPDFViewer innerRef={iframeRef} showToolbar={false}>
+                        {calendar}
+                    </StyledPDFViewer>
+                    <StyledButtonsContainer>
+                        <PDFDownloadLink
+                            document={calendar}
+                            fileName='Memento-Mori-calendar'
                         >
-                            {calendar}
-                        </StyledPDFViewer>
-                        <StyledButtonsContainer>
-                            <PDFDownloadLink
-                                document={calendar}
-                                fileName='Memento-Mori-calendar'
-                                style={{}}
-                            >
-                                <StyledBtn>Download</StyledBtn>
-                            </PDFDownloadLink>
-                            <StyledBtn onClick={() => setOpen(false)}>
-                                Close
-                            </StyledBtn>
-                        </StyledButtonsContainer>
-                    </>
-                )}
-            </ReusableDialog>
+                            <StyledBtn>Download</StyledBtn>
+                        </PDFDownloadLink>
+                        <StyledBtn onClick={() => setOpen(false)}>
+                            Close
+                        </StyledBtn>
+                    </StyledButtonsContainer>
+                </ReusableDialog>
+            </CustomizationContext.Provider>
         </>
     );
 }

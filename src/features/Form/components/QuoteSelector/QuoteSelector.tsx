@@ -1,12 +1,8 @@
 import { StyledInput } from "@/components/Reusables";
+import { CustomizationContext } from "@/global/customizationContext";
 import { DateContext } from "@/global/DateContext";
 import { useContext, useState } from "react";
 import styled, { keyframes } from "styled-components";
-
-interface QuotesProps {
-    setQuote: (value: string) => void;
-    setAuthor: (value: string) => void;
-}
 
 const animationTest = keyframes`
     0% {
@@ -31,8 +27,10 @@ const AnimatedWrapper = styled.div`
     position: relative;
 `;
 
-export const QuoteSelector = ({ setQuote, setAuthor }: QuotesProps) => {
-    const { setShowDocument, quote, author } = useContext(DateContext);
+export const QuoteSelector = () => {
+    const { setShowDocument } = useContext(DateContext);
+    const { quote, author, setQuote, setAuthor } =
+        useContext(CustomizationContext);
 
     const [showAuthorInput, setShowAuthorInput] = useState(false);
 

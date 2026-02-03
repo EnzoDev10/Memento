@@ -30,6 +30,8 @@ interface documentProps {
     weeksDifference: number;
     quote: string;
     author: string;
+    square: string;
+    stroke: string;
 }
 
 //  Crear un objeto con los pares de citas y autores
@@ -68,7 +70,13 @@ const quotesAndAuthors = [
     },
 ];
 
-export const Calendar = ({ weeksDifference, quote, author }: documentProps) => {
+export const Calendar = ({
+    weeksDifference,
+    quote,
+    author,
+    square,
+    stroke,
+}: documentProps) => {
     const maxYears = 75;
 
     const content = [];
@@ -82,6 +90,8 @@ export const Calendar = ({ weeksDifference, quote, author }: documentProps) => {
                     key={`year-${index}`}
                     year={index + 1}
                     amountToFill={weeksForThisYear}
+                    strokeColor={stroke}
+                    color={square}
                 />
                 {/*Adds a blank space after five and ten years*/}
                 {(index + 1) % 10 === 0 || (index + 1) % 10 === 5 ? (

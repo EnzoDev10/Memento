@@ -16,9 +16,6 @@ export const StyledSection = styled.section`
 export const StyledInput = styled.div`
     height: fit-content;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     position: relative;
 
     input {
@@ -28,6 +25,12 @@ export const StyledInput = styled.div`
         height: 35px;
         border-radius: 4px;
         padding: 0 5px;
+    }
+
+    input[type="color"] {
+        max-width: 100px;
+        padding: 0;
+        
     }
 
     button {

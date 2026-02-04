@@ -30,7 +30,7 @@ interface documentProps {
     weeksDifference: number;
     quote: string;
     author: string;
-    square: string;
+    fill: string;
     stroke: string;
 }
 
@@ -74,7 +74,7 @@ export const Calendar = ({
     weeksDifference,
     quote,
     author,
-    square,
+    fill,
     stroke,
 }: documentProps) => {
     const maxYears = 75;
@@ -91,7 +91,7 @@ export const Calendar = ({
                     year={index + 1}
                     amountToFill={weeksForThisYear}
                     strokeColor={stroke}
-                    color={square}
+                    color={fill}
                 />
                 {/*Adds a blank space after five and ten years*/}
                 {(index + 1) % 10 === 0 || (index + 1) % 10 === 5 ? (

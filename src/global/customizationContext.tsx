@@ -7,8 +7,8 @@ interface CustomizationContextType {
     setQuote: stateActionString;
     author: string;
     setAuthor: stateActionString;
-    squareColor: string;
-    setSquareColor: stateActionString;
+    fillColor: string;
+    setFillColor: stateActionString;
     strokeColor: string;
     setStrokeColor: stateActionString;
 }
@@ -18,8 +18,8 @@ export const CustomizationContext = createContext<CustomizationContextType>({
     setQuote: () => {},
     author: "Marcus Aurelius",
     setAuthor: () => {},
-    squareColor: "#333",
-    setSquareColor: () => {},
+    fillColor: "#333",
+    setFillColor: () => {},
     strokeColor: "#222",
     setStrokeColor: () => {},
 });

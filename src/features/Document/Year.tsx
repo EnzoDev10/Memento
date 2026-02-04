@@ -15,16 +15,15 @@ interface weekProps {
     index: number;
     strokeColor: string;
     remainingAmount: number;
-    squareColor: string;
+    fillColor: string;
 }
 
 const Week = ({
     index,
     strokeColor,
     remainingAmount,
-    squareColor,
+    fillColor,
 }: weekProps) => {
-    const fillColor = remainingAmount > 0 ? squareColor : "";
     return (
         <Rect
             key={index}
@@ -32,7 +31,7 @@ const Week = ({
             y={topPadding}
             width={weekSize}
             height={weekSize}
-            fill={fillColor}
+            fill={remainingAmount > 0 ? fillColor : ""}
             stroke={strokeColor}
             strokeWidth={0.5}
         />
@@ -60,7 +59,7 @@ export const Year = ({ year, amountToFill, strokeColor, color }: Props) => {
                 index={index}
                 strokeColor={isSeparator ? "" : strokeColor}
                 remainingAmount={shouldFill ? remaining : 0}
-                squareColor={color}
+                fillColor={color}
             />,
         );
         if (shouldFill) remaining--;

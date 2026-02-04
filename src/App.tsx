@@ -33,8 +33,8 @@ function App() {
 
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
-    const [squareColor, setSquareColor] = useState("");
-    const [strokeColor, setStrokeColor] = useState("");
+    const [fillColor, setFillColor] = useState("#333");
+    const [strokeColor, setStrokeColor] = useState("#222");
 
     const [open, setOpen] = useState(false);
 
@@ -51,7 +51,7 @@ function App() {
             weeksDifference={weeksDifference}
             quote={quote}
             author={author}
-            square={squareColor}
+            fill={fillColor}
             stroke={strokeColor}
         />
     );
@@ -64,8 +64,8 @@ function App() {
                     setQuote,
                     author,
                     setAuthor,
-                    squareColor,
-                    setSquareColor,
+                    fillColor: fillColor,
+                    setFillColor: setFillColor,
                     strokeColor,
                     setStrokeColor,
                 }}

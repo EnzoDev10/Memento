@@ -21,7 +21,7 @@ const FormContainer = styled.article`
 const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 
     h2 {
         font-size: 25px;
@@ -31,18 +31,13 @@ const StyledForm = styled.form`
         }
     }
 
-    label {
+    label,
+    legend {
         font-size: 20px;
 
         @media ${devices.mobile} {
             font-size: 18px;
         }
-    }
-
-    div {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
     }
 `;
 

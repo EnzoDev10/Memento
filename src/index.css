@@ -47,7 +47,8 @@ body {
 
 h1,
 h2,
-label {
+label,
+summary {
     font-family: var(--main-font);
     font-weight: normal;
 }

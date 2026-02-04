@@ -13,6 +13,12 @@ export const StyledSection = styled.section`
     }
 `;
 
+export const StyledInputWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+`;
+
 export const StyledInput = styled.div`
     height: fit-content;
     display: flex;
@@ -25,12 +31,6 @@ export const StyledInput = styled.div`
         height: 35px;
         border-radius: 4px;
         padding: 0 5px;
-    }
-
-    input[type="color"] {
-        max-width: 100px;
-        padding: 0;
-        
     }
 
     button {

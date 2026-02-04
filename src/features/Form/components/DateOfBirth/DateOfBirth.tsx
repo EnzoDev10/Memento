@@ -12,6 +12,7 @@ import {
     StyledOverlay,
     StyledCloseBtn,
     StyledDialogContent,
+    StyledInputWrapper,
 } from "@/components/Reusables";
 import { DateContext } from "@/global/DateContext";
 
@@ -81,7 +82,7 @@ export const DateOfBirth = ({
 
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
-            <div>
+            <StyledInputWrapper>
                 <label>date of birth</label>
 
                 <StyledInput>
@@ -100,7 +101,7 @@ export const DateOfBirth = ({
                         <CalendarBlankIcon size={24} />
                     </button>
                 </StyledInput>
-            </div>
+            </StyledInputWrapper>
 
             <Dialog.Portal>
                 <StyledOverlay />

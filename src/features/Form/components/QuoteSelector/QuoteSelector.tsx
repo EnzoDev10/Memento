@@ -1,4 +1,4 @@
-import { StyledInput } from "@/components/Reusables";
+import { StyledInput, StyledInputWrapper } from "@/components/Reusables";
 import { CustomizationContext } from "@/global/customizationContext";
 import { DateContext } from "@/global/DateContext";
 import { useContext, useState } from "react";
@@ -52,7 +52,7 @@ export const QuoteSelector = () => {
 
     return (
         <>
-            <div>
+            <StyledInputWrapper>
                 <label>Quote</label>
                 <StyledInput>
                     <input
@@ -62,7 +62,7 @@ export const QuoteSelector = () => {
                         value={quote}
                     />
                 </StyledInput>
-            </div>
+            </StyledInputWrapper>
 
             {showAuthorInput && (
                 <AnimatedWrapper>

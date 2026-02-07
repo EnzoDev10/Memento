@@ -10,6 +10,8 @@ import { devices } from "@/styles/breakpoints";
 
 import { ErrorMessage } from "@/components/Reusables";
 import { Extras } from "./components/Extras/Extras";
+import { CustomizationContext } from "@/global/customizationContext";
+import { quotesAndAuthors } from "../Calendar/commonValues";
 
 const FormContainer = styled.article`
     padding: 16px;
@@ -49,6 +51,8 @@ export const Form = () => {
     const { setUserDate, setWeeksDifference, setShowDocument } =
         useContext(DateContext);
 
+    const { quote, setAuthor, setQuote } = useContext(CustomizationContext);
+
     const handleFormSubmit = () => {
         if (birthday) {
             let differenceWithPresent = differenceInWeeks(new Date(), birthday);
@@ -56,6 +60,17 @@ export const Form = () => {
             if (differenceWithPresent >= 1) {
                 setWeeksDifference(differenceWithPresent);
                 setUserDate(birthday);
+
+                if (quote === "") {
+                    const pair =
+                        quotesAndAuthors[
+                            (quotesAndAuthors.length * Math.random()) | 0
+                        ];
+
+                    setQuote(pair.quote);
+                    setAuthor(pair.author);
+                }
+
                 setShowDocument(true);
             } else {
                 setError(true);

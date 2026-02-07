@@ -6,16 +6,17 @@ import { Hero } from "@/components/Hero";
 
 import { Form } from "@/features/Form/Form";
 
-import { Calendar } from "@/features/Document/Calendar";
-import { useEffect, useRef, useState } from "react";
+import { Calendar } from "@/features/Calendar/Document/Calendar";
+import { useEffect, useState } from "react";
 
 import { DateContext } from "@/global/DateContext";
 import { CustomizationContext } from "@/global/customizationContext";
 
 import { styled } from "styled-components";
-import { StyledBtn, StyledPDFViewer } from "@/components/Reusables";
+import { StyledBtn } from "@/components/Reusables";
 import { ReusableDialog } from "./components/ReusableDialog";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { CalendarPreview } from "./features/Calendar/Preview/CalendarPreview";
 
 const StyledButtonsContainer = styled.article`
     height: 20%;
@@ -37,8 +38,6 @@ function App() {
     const [strokeColor, setStrokeColor] = useState("#222");
 
     const [open, setOpen] = useState(false);
-
-    const iframeRef = useRef<HTMLIFrameElement>(null);
 
     useEffect(() => {
         if (showDocument) {
@@ -90,9 +89,16 @@ function App() {
                     open={open}
                     setOpen={setOpen}
                 >
-                    <StyledPDFViewer innerRef={iframeRef} showToolbar={false}>
+                    <CalendarPreview
+                        weeksDifference={weeksDifference}
+                        quote={quote}
+                        author={author}
+                        fill={fillColor}
+                        stroke={strokeColor}
+                    />
+                    {/* <StyledPDFViewer innerRef={iframeRef} showToolbar={false}>
                         {calendar}
-                    </StyledPDFViewer>
+                    </StyledPDFViewer> */}
                     <StyledButtonsContainer>
                         <PDFDownloadLink
                             document={calendar}

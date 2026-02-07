@@ -129,3 +129,8 @@ export const StyledPDFViewer = styled(PDFViewer)`
     height: 100%;
     max-width: 90vw;
 `;
+
+export const PreviewText = styled.p`
+    color: #222;
+    font-family: var(--main-font);
+`;

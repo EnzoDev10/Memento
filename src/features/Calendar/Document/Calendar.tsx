@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Page,
     Text,
@@ -7,10 +8,12 @@ import {
     Font,
 } from "@react-pdf/renderer";
 
-import "@/index.css";
-import { Year } from "@/features/Document/Year";
+import type { documentProps } from "../commonValues";
 
-import Merriweather from "./fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf";
+import "@/index.css";
+import { Year } from "@/features/Calendar/Document/Year";
+
+import Merriweather from "../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf";
 
 Font.register({ family: "Merriweather", src: Merriweather });
 
@@ -25,50 +28,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
 });
-
-interface documentProps {
-    weeksDifference: number;
-    quote: string;
-    author: string;
-    fill: string;
-    stroke: string;
-}
-
-//  Crear un objeto con los pares de citas y autores
-const quotesAndAuthors = [
-    {
-        quote: "Life is long enough, and a sufficiently generous amount has been given to us for the highest achievements if it were all well invested.",
-        author: "Seneca",
-    },
-    {
-        quote: "He who fears death will never do anything worthy of a man who is alive.",
-        author: "Seneca",
-    },
-    {
-        quote: "You act like mortals in all that you fear, and like immortals in all that you desire.",
-        author: "Seneca",
-    },
-    {
-        quote: "He does only what is his to do, and considers constantly what the world has store for him—doing his best, and trusting that all is for the best. For we carry our fate with us—and it carries us.",
-        author: "Marcus Aurelius",
-    },
-    {
-        quote: "He who every day puts the finishing touches to his life is never short of time.",
-        author: "Seneca",
-    },
-    {
-        quote: "You could leave life right now. Let that determine what you do and say and think.",
-        author: "Marcus Aurelius",
-    },
-    {
-        quote: "There is only one thing that is important — to live honestly and die honestly.",
-        author: "Leo Tolstoy",
-    },
-    {
-        quote: "Do not act as if you were going to live ten thousand years. Death hangs over you.",
-        author: "Marcus Aurelius",
-    },
-];
 
 export const Calendar = ({
     weeksDifference,
@@ -85,29 +44,21 @@ export const Calendar = ({
     for (let index = 0; index < maxYears; index++) {
         const weeksForThisYear = Math.min(remaining, 52);
         content.push(
-            <>
+            <React.Fragment key={`year-${index}`}>
                 <Year
-                    key={`year-${index}`}
                     year={index + 1}
                     amountToFill={weeksForThisYear}
                     strokeColor={stroke}
                     color={fill}
+                    index={index}
                 />
                 {/*Adds a blank space after five and ten years*/}
                 {(index + 1) % 10 === 0 || (index + 1) % 10 === 5 ? (
                     <View style={{ marginTop: 2, marginBottom: 2 }} />
                 ) : null}
-            </>,
+            </React.Fragment>,
         );
         remaining -= weeksForThisYear;
-    }
-
-    if (quote === "") {
-        const pair =
-            quotesAndAuthors[(quotesAndAuthors.length * Math.random()) | 0];
-
-        quote = pair.quote;
-        author = pair.author;
     }
 
     return (
@@ -128,7 +79,7 @@ export const Calendar = ({
                 <View
                     style={{
                         gap: 8,
-                        padding: "0 70 0 55",
+                        padding: "8 70 0 55",
                     }}
                 >
                     <Text

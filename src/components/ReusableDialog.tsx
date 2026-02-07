@@ -18,7 +18,7 @@ const PDFDialogContent = styled(StyledDialogContent)`
     border: none;
 
     width: 80vw;
-    max-width: 1000px;
+    max-width: 540px;
     min-width: 300px;
 
     height: 100%;

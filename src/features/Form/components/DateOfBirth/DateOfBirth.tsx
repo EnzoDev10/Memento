@@ -59,8 +59,7 @@ export const DateOfBirth = ({
         setError(false);
         setShowDocument(false);
 
-        setInputValue(e.target.value); // Sincroniza el valor del input
-
+        setInputValue(e.target.value);
         let newDate = new Date(e.target.value);
 
         setSelectedDate(newDate);

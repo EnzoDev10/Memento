@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import "@/index.css";
+import { devices } from "@/styles/breakpoints";
 
 export const CalendarWrapper = styled.div`
     background-color: var(--bg-dark);
@@ -21,7 +22,6 @@ export const CalendarWrapper = styled.div`
     }
 
     & .nombre-dia {
-        font-size: var(--body-size);
         font-weight: normal;
         height: 48px;
         font-family: var(--main-font);
@@ -29,7 +29,8 @@ export const CalendarWrapper = styled.div`
     }
 
     & .dia {
-        border-radius: var(--radius-small);
+        height: fit-content;
+        width:fit-content;
 
         & .dia-boton {
             width: 48px;
@@ -65,5 +66,13 @@ export const CalendarWrapper = styled.div`
     }
     .label {
         display: none;
+    }
+
+    @media ${devices.mobile} {
+        .nombre-dia, .dia
+        .dia-boton {
+            height: 40px;
+            width: 40px;
+        }
     }
 `;

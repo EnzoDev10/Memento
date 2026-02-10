@@ -18,8 +18,7 @@ import { ReusableDialog } from "./components/ReusableDialog";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { CalendarPreview } from "./features/Calendar/Preview/CalendarPreview";
 
-const StyledButtonsContainer = styled.article`
-    height: 20%;
+const StyledButtonsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,8 +83,8 @@ function App() {
                 </DateContext.Provider>
 
                 <ReusableDialog
-                    title='title'
-                    description='descriotion'
+                    title='Preview'
+                    description='Preview of how the calendar will look, with the quote, author and the appropriate weeks filled in with the chosen color.'
                     open={open}
                     setOpen={setOpen}
                 >

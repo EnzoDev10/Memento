@@ -4,6 +4,7 @@ import type { documentProps } from "../commonValues";
 
 import { YearPreview } from "./YearPreview";
 import { PreviewText } from "@/components/Reusables";
+import { devices } from "@/styles/breakpoints";
 
 // * agregar estilos para las citas asi se parecen mas a los estilos del documento.
 // * Acomodar mejor los botones.
@@ -18,7 +19,11 @@ const StyledPreviewContainer = styled.article`
     font-family: Merriweather;
     padding: 10px;
     border-radius: 8px;
-`;
+
+
+    @media ${devices.mobile} {
+        transform:scale(0.7)
+    }`;
 
 const StyledPreviewTextContainer = styled.div`
     display: flex;

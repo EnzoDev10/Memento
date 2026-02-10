@@ -18,7 +18,7 @@ const StyledYearContainer = styled.div`
 `;
 
 const StyledSvg = styled.svg`
-    padding: "0 1px";
+    padding: 0 1px;
 `;
 
 const WeekPreview = ({ index, strokeColor, fillColor }: weekProps) => {

@@ -14,16 +14,17 @@ interface DialogProps extends React.PropsWithChildren {
 const PDFDialogContent = styled(StyledDialogContent)`
     display: flex;
     flex-direction: column;
-    height: 90vh;
     border: none;
 
-    width: 80vw;
-    max-width: 540px;
+    width: fit-content;
     min-width: 300px;
+    padding: 20px;
 
     height: 100%;
     display: flex;
     justify-content: center;
+    gap: 15px;
+    text-align: center;
 
     padding: 100px 0;
     h3 {
@@ -46,8 +47,8 @@ export const ReusableDialog = ({
             <Dialog.Portal>
                 <StyledOverlay />
                 <PDFDialogContent>
+                    <Dialog.Title>{title}</Dialog.Title>
                     <VisuallyHidden>
-                        <Dialog.Title>{title}</Dialog.Title>
                         <Dialog.Description>{description}</Dialog.Description>
                     </VisuallyHidden>
                     {children}

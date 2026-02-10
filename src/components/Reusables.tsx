@@ -105,9 +105,7 @@ export const StyledCloseBtn = styled(StyledBtn)`
 `;
 
 export const StyledDialogContent = styled(Dialog.Content)`
-    background-color: var(--gray-1);
     border-radius: 6px;
-    box-shadow: var(--shadow-6);
     position: fixed;
     top: 50%;
     left: 50%;

@@ -532,20 +532,19 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
     gap: 15px;
     text-align: center;
 
-    padding: 100px 0;
-    h3 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    @media ${to.mobile} {
+        transform: translate(-50%, -50%) scale(0.65);
     }
-`;const a6=({title:e,description:t,open:n,setOpen:r,children:i})=>(0,B.jsx)(qa,{open:n,onOpenChange:r,children:(0,B.jsxs)(Ja,{children:[(0,B.jsx)(Z$,{}),(0,B.jsxs)(i6,{children:[(0,B.jsx)(Za,{children:e}),(0,B.jsx)(F3,{children:(0,B.jsx)(Qa,{children:t})}),i]})]})});var o6=jn.div`
+`,a6=jn(Za)`
+    background-color: var(--bg-ultra-dark);
+    border-radius: 10px;
+`;const o6=({title:e,description:t,open:n,setOpen:r,children:i})=>(0,B.jsx)(qa,{open:n,onOpenChange:r,children:(0,B.jsxs)(Ja,{children:[(0,B.jsx)(Z$,{}),(0,B.jsxs)(i6,{children:[(0,B.jsx)(a6,{children:e}),(0,B.jsx)(F3,{children:(0,B.jsx)(Qa,{children:t})}),i]})]})});var s6=jn.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-`,s6=jn.svg`
+`,c6=jn.svg`
     padding: 0 1px;
-`,c6=({index:e,strokeColor:t,fillColor:n})=>(0,B.jsx)(`rect`,{x:e*(q3+4),y:2,width:q3,height:q3,fill:n,stroke:t,strokeWidth:.5});const l6=({year:e,amountToFill:t,strokeColor:n,color:r})=>{let i=e.toString(),a=[],o=t,s=i.endsWith(`5`)||i.endsWith(`0`);for(let e=0;e<53;e++){let t=e===26,i=!t&&o>0;a.push((0,B.jsx)(c6,{index:e,strokeColor:t?``:n,fillColor:i?r:`transparent`},`week-preview-${e}`)),i&&o--}return(0,B.jsxs)(o6,{children:[(0,B.jsx)(s6,{width:J3,height:Y3,children:a}),s&&(0,B.jsx)(e1,{style:{fontSize:4.75*2,marginLeft:5},children:i})]})};var u6=jn.article`
+`,l6=({index:e,strokeColor:t,fillColor:n})=>(0,B.jsx)(`rect`,{x:e*(q3+4),y:2,width:q3,height:q3,fill:n,stroke:t,strokeWidth:.5});const u6=({year:e,amountToFill:t,strokeColor:n,color:r})=>{let i=e.toString(),a=[],o=t,s=i.endsWith(`5`)||i.endsWith(`0`);for(let e=0;e<53;e++){let t=e===26,i=!t&&o>0;a.push((0,B.jsx)(l6,{index:e,strokeColor:t?``:n,fillColor:i?r:`transparent`},`week-preview-${e}`)),i&&o--}return(0,B.jsxs)(s6,{children:[(0,B.jsx)(c6,{width:J3,height:Y3,children:a}),s&&(0,B.jsx)(e1,{style:{fontSize:4.75*2,marginLeft:5},children:i})]})};var d6=jn.article`
     display: flex;
     flex-direction: column;
     background-color: #e9ecef;
@@ -553,24 +552,20 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
     font-family: Merriweather;
     padding: 10px;
     border-radius: 8px;
-
-
-    @media ${to.mobile} {
-        transform:scale(0.7)
-    }`,d6=jn.div`
+`,f6=jn.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 8px 20px;
-`;const f6=({weeksDifference:e,quote:t,author:n,fill:r,stroke:i})=>{let a=[],o=e;for(let e=0;e<75;e++){let t=Math.min(o,52);a.push((0,B.jsxs)(y.Fragment,{children:[(0,B.jsx)(l6,{year:e+1,amountToFill:t,strokeColor:i,color:r,index:e}),(e+1)%10==0||(e+1)%10==5?(0,B.jsx)(`div`,{style:{marginTop:2,marginBottom:2}}):null]},`year-${e}`)),o-=t}return(0,B.jsx)(B.Fragment,{children:(0,B.jsxs)(u6,{children:[(0,B.jsx)(e1,{style:{fontSize:20,textAlign:`center`,width:`100%`,padding:`8px 0`},children:`Memento Mori`}),(0,B.jsx)(`div`,{style:{alignSelf:`center`},children:a}),(0,B.jsxs)(d6,{children:[(0,B.jsx)(e1,{style:{fontSize:10,alignSelf:`center`,textAlign:`center`},children:t}),(0,B.jsxs)(e1,{style:{fontSize:8,alignSelf:`center`},children:[`- `,n]})]})]})})};var p6=jn.div`
+`;const p6=({weeksDifference:e,quote:t,author:n,fill:r,stroke:i})=>{let a=[],o=e;for(let e=0;e<75;e++){let t=Math.min(o,52);a.push((0,B.jsxs)(y.Fragment,{children:[(0,B.jsx)(u6,{year:e+1,amountToFill:t,strokeColor:i,color:r,index:e}),(e+1)%10==0||(e+1)%10==5?(0,B.jsx)(`div`,{style:{marginTop:2,marginBottom:2}}):null]},`year-${e}`)),o-=t}return(0,B.jsx)(B.Fragment,{children:(0,B.jsxs)(d6,{children:[(0,B.jsx)(e1,{style:{fontSize:20,textAlign:`center`,width:`100%`,padding:`8px 0`},children:`Memento Mori`}),(0,B.jsx)(`div`,{style:{alignSelf:`center`},children:a}),(0,B.jsxs)(f6,{children:[(0,B.jsx)(e1,{style:{fontSize:10,alignSelf:`center`,textAlign:`center`},children:t}),(0,B.jsxs)(e1,{style:{fontSize:8,alignSelf:`center`},children:[`- `,n]})]})]})})};var m6=jn.div`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-`;function m6(){let[e,t]=(0,y.useState)(new Date),[n,r]=(0,y.useState)(0),[i,a]=(0,y.useState)(!1),[o,s]=(0,y.useState)(``),[c,l]=(0,y.useState)(``),[u,d]=(0,y.useState)(`#333`),[f,p]=(0,y.useState)(`#222`),[m,h]=(0,y.useState)(!1);(0,y.useEffect)(()=>{i&&h(!0)},[i]);let g=(0,B.jsx)(r6,{weeksDifference:n,quote:o,author:c,fill:u,stroke:f});return(0,B.jsx)(B.Fragment,{children:(0,B.jsxs)(R3.Provider,{value:{quote:o,setQuote:s,author:c,setAuthor:l,fillColor:u,setFillColor:d,strokeColor:f,setStrokeColor:p},children:[(0,B.jsx)(o1,{}),(0,B.jsx)(I3.Provider,{value:{userDate:e,setUserDate:t,weeksDifference:n,setWeeksDifference:r,showDocument:i,setShowDocument:a},children:(0,B.jsx)($3,{})}),(0,B.jsxs)(a6,{title:`Preview`,description:`Preview of how the calendar will look, with the quote, author and the appropriate weeks filled in with the chosen color.`,open:m,setOpen:h,children:[(0,B.jsx)(f6,{weeksDifference:n,quote:o,author:c,fill:u,stroke:f}),(0,B.jsxs)(p6,{children:[(0,B.jsx)(G$,{document:g,fileName:`Memento-Mori-calendar`,children:(0,B.jsx)(Y$,{children:`Download`})}),(0,B.jsx)(Y$,{onClick:()=>h(!1),children:`Close`})]})]})]})})}var h6=m6,g6=jn.main`
+`;function h6(){let[e,t]=(0,y.useState)(new Date),[n,r]=(0,y.useState)(0),[i,a]=(0,y.useState)(!1),[o,s]=(0,y.useState)(``),[c,l]=(0,y.useState)(``),[u,d]=(0,y.useState)(`#333`),[f,p]=(0,y.useState)(`#222`),[m,h]=(0,y.useState)(!1);(0,y.useEffect)(()=>{i&&h(!0)},[i]);let g=(0,B.jsx)(r6,{weeksDifference:n,quote:o,author:c,fill:u,stroke:f});return(0,B.jsx)(B.Fragment,{children:(0,B.jsxs)(R3.Provider,{value:{quote:o,setQuote:s,author:c,setAuthor:l,fillColor:u,setFillColor:d,strokeColor:f,setStrokeColor:p},children:[(0,B.jsx)(o1,{}),(0,B.jsx)(I3.Provider,{value:{userDate:e,setUserDate:t,weeksDifference:n,setWeeksDifference:r,showDocument:i,setShowDocument:a},children:(0,B.jsx)($3,{})}),(0,B.jsxs)(o6,{title:`Preview`,description:`Preview of how the calendar will look, with the quote, author and the appropriate weeks filled in with the chosen color.`,open:m,setOpen:h,children:[(0,B.jsx)(p6,{weeksDifference:n,quote:o,author:c,fill:u,stroke:f}),(0,B.jsxs)(m6,{children:[(0,B.jsx)(G$,{document:g,fileName:`Memento-Mori-calendar`,children:(0,B.jsx)(Y$,{children:`Download`})}),(0,B.jsx)(Y$,{onClick:()=>h(!1),children:`Close`})]})]})]})})}var g6=h6,_6=jn.main`
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-`;(0,v.createRoot)(document.getElementById(`root`)).render((0,B.jsx)(y.StrictMode,{children:(0,B.jsx)(g6,{children:(0,B.jsx)(h6,{})})}));
+`;(0,v.createRoot)(document.getElementById(`root`)).render((0,B.jsx)(y.StrictMode,{children:(0,B.jsx)(_6,{children:(0,B.jsx)(g6,{})})}));

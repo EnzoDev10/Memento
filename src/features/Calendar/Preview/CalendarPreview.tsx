@@ -19,11 +19,7 @@ const StyledPreviewContainer = styled.article`
     font-family: Merriweather;
     padding: 10px;
     border-radius: 8px;
-
-
-    @media ${devices.mobile} {
-        transform:scale(0.7)
-    }`;
+`;
 
 const StyledPreviewTextContainer = styled.div`
     display: flex;

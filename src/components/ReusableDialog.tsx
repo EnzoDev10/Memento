@@ -3,6 +3,7 @@ import type React from "react";
 import { StyledDialogContent, StyledOverlay } from "./Reusables";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import styled from "styled-components";
+import { devices } from "@/styles/breakpoints";
 
 interface DialogProps extends React.PropsWithChildren {
     title: string;
@@ -26,12 +27,17 @@ const PDFDialogContent = styled(StyledDialogContent)`
     gap: 15px;
     text-align: center;
 
-    padding: 100px 0;
     h3 {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+`;
+
+const StyledDialogTitle = styled(Dialog.Title)`
+    @media ${devices.mobile} {
+        transform: translateY(155px);
     }
 `;
 
@@ -43,11 +49,11 @@ export const ReusableDialog = ({
     children,
 }: DialogProps) => {
     return (
-        <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Root open={true} onOpenChange={setOpen}>
             <Dialog.Portal>
                 <StyledOverlay />
                 <PDFDialogContent>
-                    <Dialog.Title>{title}</Dialog.Title>
+                    <StyledDialogTitle>{title}</StyledDialogTitle>
                     <VisuallyHidden>
                         <Dialog.Description>{description}</Dialog.Description>
                     </VisuallyHidden>

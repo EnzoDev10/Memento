@@ -20,10 +20,10 @@ const StyledPreviewContainer = styled.article`
     padding: 10px;
     border-radius: 8px;
 
-
     @media ${devices.mobile} {
-        transform:scale(0.7)
-    }`;
+        transform: scale(0.6);
+    }
+`;
 
 const StyledPreviewTextContainer = styled.div`
     display: flex;

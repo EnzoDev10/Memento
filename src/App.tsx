@@ -17,12 +17,17 @@ import { StyledBtn } from "@/components/Reusables";
 import { ReusableDialog } from "./components/ReusableDialog";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { CalendarPreview } from "./features/Calendar/Preview/CalendarPreview";
+import { devices } from "./styles/breakpoints";
 
 const StyledButtonsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
+
+    @media ${devices.mobile} {
+        transform: translateY(-155px);
+    }
 `;
 
 function App() {

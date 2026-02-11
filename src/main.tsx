@@ -13,10 +13,21 @@ const StyledMain = styled.main`
     align-items: center;
 `;
 
-createRoot(document.getElementById("root")!).render(
+let root = (window as any).__root;
+
+if (!root) {
+    root = createRoot(document.getElementById("root")!);
+    (window as any).__root = root;
+}
+
+root.render(
     <StrictMode>
         <StyledMain>
             <App />
         </StyledMain>
     </StrictMode>,
 );
+
+if ((import.meta as any).hot) {
+    (import.meta as any).hot.accept();
+}

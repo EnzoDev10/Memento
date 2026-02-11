@@ -44,6 +44,13 @@ function App() {
         }
     }, [showDocument]);
 
+    useEffect(() => {
+        if (!open) {
+            setQuote("");
+            setAuthor("");
+        }
+    }, [open]);
+
     const calendar = (
         <Calendar
             weeksDifference={weeksDifference}
@@ -103,13 +110,15 @@ function App() {
                             document={calendar}
                             fileName='Memento-Mori-calendar'
                         >
-                            <StyledBtn>Download</StyledBtn>
+                            {({ loading }) => (
+                                <StyledBtn disabled={loading}>
+                                    {loading ? "Generating..." : "Download"}
+                                </StyledBtn>
+                            )}
                         </PDFDownloadLink>
                         <StyledBtn
                             onClick={() => {
                                 setOpen(false);
-                                setQuote("");
-                                setAuthor("");
                             }}
                         >
                             Close

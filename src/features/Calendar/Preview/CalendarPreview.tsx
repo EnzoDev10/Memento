@@ -74,15 +74,18 @@ export const CalendarPreview = ({
                     <PreviewText
                         style={{
                             fontSize: 10,
-                            alignSelf: "center",
                             textAlign: "center",
                         }}
                     >
                         {quote}
                     </PreviewText>
-                    <PreviewText style={{ fontSize: 8, alignSelf: "center" }}>
-                        - {author}
-                    </PreviewText>
+                    {author != "" && (
+                        <PreviewText
+                            style={{ fontSize: 8, alignSelf: "center" }}
+                        >
+                            -{author}
+                        </PreviewText>
+                    )}
                 </StyledPreviewTextContainer>
             </StyledPreviewContainer>
         </>

@@ -105,7 +105,13 @@ function App() {
                         >
                             <StyledBtn>Download</StyledBtn>
                         </PDFDownloadLink>
-                        <StyledBtn onClick={() => setOpen(false)}>
+                        <StyledBtn
+                            onClick={() => {
+                                setOpen(false);
+                                setQuote("");
+                                setAuthor("");
+                            }}
+                        >
                             Close
                         </StyledBtn>
                     </StyledButtonsContainer>

@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         backgroundColor: "#e9ecef",
         alignItems: "center",
+        justifyContent: "center",
         fontFamily: "Merriweather",
     },
     weeksContainer: {
@@ -79,21 +80,23 @@ export const Calendar = ({
                 <View
                     style={{
                         gap: 8,
-                        padding: "8 70 0 55",
+                        padding: "10 70 0 55",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                     }}
                 >
                     <Text
                         style={{
                             fontSize: 10,
-                            alignSelf: "center",
                             textAlign: "center",
                         }}
                     >
                         {quote}
                     </Text>
-                    <Text style={{ fontSize: 8, alignSelf: "center" }}>
-                        - {author}
-                    </Text>
+                    {author != "" && (
+                        <Text style={{ fontSize: 8 }}> -{author}</Text>
+                    )}
                 </View>
             </Page>
         </Document>
